@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json to Img Convertor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Json to Img Convertor</h2>
+        <div class="btn_container">
+            <input type="text" placeholder="Json Of Questions" id="jsonOfQuestions">
+            <button onclick="show()">Save</button>
+        </div> 
+        <div class="btn_container">
+            <input type="text" placeholder="Questions Range" id="numberOfQuestions">
+            <button onclick="download(10,50)" id="download">Download</button>
+        </div> 
+        <section class="question_container">
+            <!-- <div class="question_fake">
+                <div class="question_title">Who is the prime minister of india ?</div>
+                <div class="answer">Narendera Modi</div>
+            </div>
+            <div class="question_fake">
+                <div class="question_title">Who is the prime minister of india ?</div>
+                <div class="answer">Narendera Modi</div>
+            </div> -->
+        </section>
+        <section class="hidden_question_container"></section>
+        <a id="hidden_download_link" download="quiz.png" href=""></a>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
