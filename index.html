@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Json to Img Convertor</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Math Question Generator</title>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <h2>Json to Img Convertor</h2>
-        <div class="btn_container">
-            <input type="text" placeholder="Json Of Questions" id="jsonOfQuestions">
-            <button onclick="show()">Save</button>
-        </div> 
-        <div class="btn_container">
-            <input type="text" placeholder="Questions Range" id="numberOfQuestions">
-            <button onclick="download(10,50)" id="download">Download</button>
-        </div> 
-        <section class="question_container">
-            <!-- <div class="question_fake">
-                <div class="question_title">Who is the prime minister of india ?</div>
-                <div class="answer">Narendera Modi</div>
-            </div>
-            <div class="question_fake">
-                <div class="question_title">Who is the prime minister of india ?</div>
-                <div class="answer">Narendera Modi</div>
-            </div> -->
-        </section>
-        <section class="hidden_question_container"></section>
-        <a id="hidden_download_link" download="quiz.png" href=""></a>
+        <!-- <input type="text" name="input" id="input"> -->
+        <form>
+            <span>Number of Digits : </span>
+            <input type="radio" id="2" name="numberOfDigits" value="2">
+            <label for="2">2</label>
+            <input type="radio" id="3" name="numberOfDigits" value="3">
+            <label for="3">3</label>
+            <input type="radio" id="4" name="numberOfDigits" value="4">
+            <label for="4">4</label>
+            <input type="radio" id="" name="numberOfDigits" value="5">
+            <label for="5">5</label>
+        </form>
+        <form>
+            <!-- <span>Number of Digits : </span> -->
+            <input type="radio" id="addition" name="calculationType" value="addition">
+            <label for="addition">Plus</label>
+            <input type="radio" id="substraction" name="calculationType" value="substraction">
+            <label for="substraction">Minus</label>
+            <input type="radio" id="multiply" name="calculationType" value="multiply">
+            <label for="multiply">Multiply</label>
+            <input type="radio" id="divide" name="calculationType" value="divide">
+            <label for="divide">Divide</label>
+        </form>
 
+        <div class="content" id="content">
+            <!-- <div class="question">
+                <div class="math-question" id="num1">0</div>
+                <div class="math-symbol">+</div>
+                <div class="math-question" id="num2">0</div>
+                <div class="math-symbol">=</div>
+                <div class="underline"></div>
+            </div> -->
+        </div>
+        <button class="refresh-btn" id="refreshBtn">New Question</button>
+        <button class="download-btn" id="downloadBtn">Download Screenshot</button>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
