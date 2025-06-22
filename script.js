@@ -37,7 +37,7 @@ function substraction_questions(starting , ending) {
 
 function multiply_questions() {
     const num1 = Math.floor(Math.random() * 900) + 100; // Random number between 1-100
-    const num2 = Math.floor(Math.random() * 10) + 90; // Random number between 1-100
+    const num2 = Math.floor(Math.random() * 90) + 10; // Random number between 1-100
     
     // document.getElementById('num1').textContent = num1;
     // document.getElementById('num2').textContent = num2;
