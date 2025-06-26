@@ -31,7 +31,7 @@ document.getElementById('downloadBtn').addEventListener('click', function () {
     html2canvas(content).then(canvas => {
         // Create a temporary link to download the image
         const link = document.createElement('a');
-        link.download = 'math-question.png';
+        link.download = 'word-meaning.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
     });
