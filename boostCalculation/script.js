@@ -12,13 +12,24 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     for (let i = 1; i <= 30; i++) {
         const num = Math.floor(Math.random() * 90) + 10;
         let content = document.querySelector("div.content")
-        let html = `
-        <div class="question-answer">
-        <span class="question">
-        <span class="num">${num}</span> + <span class="answer">?</span> = 100 <button class="show_answer">Show</button>
-        </span>
-        </div>`
-        content.insertAdjacentHTML("beforeend", html)
+        let input = document.querySelector('input[name="numberOfDigits"]:checked').value;
+        if (input == "square") {
+            let html = `
+            <div class="question-answer">
+            <span class="question">
+            <span class="num">${num}</span><sup>2</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
+            </span>
+            </div>`
+            content.insertAdjacentHTML("beforeend", html)
+        } else {
+            let html = `
+            <div class="question-answer">
+            <span class="question">
+            <span class="num">${num}</span> + <span class="answer">?</span> = 100 <button class="show_answer">Show</button>
+            </span>
+            </div>`
+            content.insertAdjacentHTML("beforeend", html)
+        }
     }
     let buttons = document.querySelectorAll("button.show_answer")
 
@@ -26,7 +37,14 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         button.addEventListener("click", (event) => {
             let parent = event.target.parentElement
             let num = parent.querySelector(".num").textContent
-            parent.querySelector("span.answer").textContent = 100 - num
+            let input = document.querySelector('input[name="numberOfDigits"]:checked').value
+            if(input == "square"){
+
+                parent.querySelector("span.answer").textContent = num * num
+            }else{
+
+                parent.querySelector("span.answer").textContent = 100 - num
+            }
             button.style.display = "none"
         })
     })
