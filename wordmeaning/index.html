@@ -11,23 +11,27 @@
 
 <body>
     <div class="container">
-        <input type="text" name="input" id="input">
-
+       <span>
+           <input type="text" name="input" class="input" id="input" placeholder="Enter Array"> 
+           <input class="input" id="headers" type="text" placeholder="Enter Headers">
+        </span>
+         <!-- <form>
+            <span>Word-Meaning : </span>
+            <input type="radio" id="Word-Meaning" name="Word-Meaning" value="yes">
+            <label for="Word-Meaning">Yes</label>
+            <input type="radio" id="Word-Meaning" name="Word-Meaning" value="no">
+            <label for="Word-Meaning">No</label>
+        </form> -->
+        
 
         <div class="content" id="content">
             <div class="wordMeaning">
                 <table class="my-table">
-                    <tr>
-                       <th>Word</th>
-                       <th>Meaning</th>
-                       <th>Word</th>
-                       <th>Meaning</th>
-                    </tr>
                     
                 </table>
             </div>
         </div>
-        <button class="refresh-btn" id="refreshBtn">Show</button>
+        <button class="refresh-btn" id="refreshBtn">Generate</button>
         <button class="download-btn" id="downloadBtn">Download</button>
     </div>
 
