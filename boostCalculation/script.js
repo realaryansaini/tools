@@ -21,6 +21,14 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
+        } if (input == "squareRoot") {
+            let html = `
+            <div class="question-answer">
+            <span class="question">
+            <span class="num">${num * num}</span><sup>1/2</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
+            </span>
+            </div>`
+            content.insertAdjacentHTML("beforeend", html)
         } else {
             let html = `
             <div class="question-answer">
@@ -38,10 +46,13 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let parent = event.target.parentElement
             let num = parent.querySelector(".num").textContent
             let input = document.querySelector('input[name="numberOfDigits"]:checked').value
-            if(input == "square"){
+            if (input == "square") {
 
                 parent.querySelector("span.answer").textContent = num * num
-            }else{
+            } if(input == "squareRoot"){
+                
+                parent.querySelector("span.answer").textContent = Math.sqrt(num)
+            } else {
 
                 parent.querySelector("span.answer").textContent = 100 - num
             }

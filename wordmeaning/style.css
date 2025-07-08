@@ -77,8 +77,6 @@ html {
     grid-template-columns: auto auto;
     width: min(calc(100% - 20px) , 500px);
     gap: 5px;
-    /* padding: 0 10px; */
-    /* background-color: red; */
 }
 
 
