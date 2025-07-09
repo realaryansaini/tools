@@ -13,7 +13,16 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         const num = Math.floor(Math.random() * 90) + 10;
         let content = document.querySelector("div.content")
         let input = document.querySelector('input[name="numberOfDigits"]:checked').value;
-        if (input == "square") {
+        if (input == "gap") {
+            let html = `
+            <div class="question-answer">
+            <span class="question">
+            <span class="num">${num}</span> + <span class="answer">?</span> = 100 <button class="show_answer">Show</button>
+            </span>
+            </div>`
+            content.insertAdjacentHTML("beforeend", html)
+        }
+        else if (input == "square") {
             let html = `
             <div class="question-answer">
             <span class="question">
@@ -21,7 +30,8 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
-        } if (input == "squareRoot") {
+        }
+        else if (input == "squareRoot") {
             let html = `
             <div class="question-answer">
             <span class="question">
@@ -29,11 +39,21 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
-        } else {
+        }
+        else if (input == "cube") {
             let html = `
             <div class="question-answer">
             <span class="question">
-            <span class="num">${num}</span> + <span class="answer">?</span> = 100 <button class="show_answer">Show</button>
+            <span class="num">${num}</span><sup>3</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
+            </span>
+            </div>`
+            content.insertAdjacentHTML("beforeend", html)
+        }
+        else if (input == "cubeRoot") {
+            let html = `
+            <div class="question-answer">
+            <span class="question">
+            <span class="num">${num * num * num}</span><sup>1/2</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -46,15 +66,20 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let parent = event.target.parentElement
             let num = parent.querySelector(".num").textContent
             let input = document.querySelector('input[name="numberOfDigits"]:checked').value
-            if (input == "square") {
-
-                parent.querySelector("span.answer").textContent = num * num
-            } if(input == "squareRoot"){
-                
-                parent.querySelector("span.answer").textContent = Math.sqrt(num)
-            } else {
-
+            if (input == "gap") {
                 parent.querySelector("span.answer").textContent = 100 - num
+            }
+            else if (input == "square") {
+                parent.querySelector("span.answer").textContent = num * num
+            }
+            else if (input == "squareRoot") {
+                parent.querySelector("span.answer").textContent = Math.sqrt(num)
+            }
+            else if (input == "cube") {
+                parent.querySelector("span.answer").textContent = num * num * num
+            }
+            else if (input == "cubeRoot") {
+                parent.querySelector("span.answer").textContent = Math.cbrt(num)
             }
             button.style.display = "none"
         })
@@ -65,11 +90,12 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
 document.getElementById('downloadBtn').addEventListener('click', function () {
     const content = document.getElementById('content');
 
-    html2canvas(content).then(canvas => {
-        // Create a temporary link to download the image
-        const link = document.createElement('a');
-        link.download = 'word-meaning.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-    });
+    // html2canvas(content).then(canvas => {
+    //     const link = document.createElement('a');
+    //     link.download = 'word-meaning.png';
+    //     link.href = canvas.toDataURL('image/png');
+    //     link.click();
+    // });
+
+    content.innerHTML = ""
 });
