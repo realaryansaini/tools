@@ -13,7 +13,18 @@
     <div class="container">
         <!-- <input type="text" name="input" id="input"> -->
         <form>
-            <span>Number of Digits : </span>
+            <!-- <span>Number of Digits : </span> -->
+            <input type="radio" id="addition" name="calculationType" value="addition">
+            <label for="addition">Plus</label>
+            <input type="radio" id="substraction" name="calculationType" value="substraction">
+            <label for="substraction">Minus</label>
+            <input type="radio" id="multiply" name="calculationType" value="multiply">
+            <label for="multiply">Multiply</label>
+            <!-- <input type="radio" id="divide" name="calculationType" value="divide">
+            <label for="divide">Divide</label> -->
+        </form>
+        <form>
+            <!-- <span>Digits : </span> -->
             <input type="radio" id="2" name="numberOfDigits" value="2">
             <label for="2">2</label>
             <input type="radio" id="3" name="numberOfDigits" value="3">
@@ -22,17 +33,6 @@
             <label for="4">4</label>
             <input type="radio" id="" name="numberOfDigits" value="5">
             <label for="5">5</label>
-        </form>
-        <form>
-            <!-- <span>Number of Digits : </span> -->
-            <input type="radio" id="addition" name="calculationType" value="addition">
-            <label for="addition">Plus</label>
-            <input type="radio" id="substraction" name="calculationType" value="substraction">
-            <label for="substraction">Minus</label>
-            <input type="radio" id="multiply" name="calculationType" value="multiply">
-            <label for="multiply">Multiply</label>
-            <input type="radio" id="divide" name="calculationType" value="divide">
-            <label for="divide">Divide</label>
         </form>
 
         <div class="content" id="content">
