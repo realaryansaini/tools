@@ -144,3 +144,7 @@ input[type="radio"]:checked+label {
     background: #009688cf;
     color: #fff;
 }
+
+form#optionsForSum{
+    display:none;
+}
