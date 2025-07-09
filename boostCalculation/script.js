@@ -91,6 +91,39 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             content.insertAdjacentHTML("beforeend", html)
 
         }
+        else if (input == "mul") {
+            let sumInput = document.querySelector('input[name="optionsForSum"]:checked').value
+            let sumNum1 = 0
+            let sumNum2 = 0
+            if (sumInput == "1-1") {
+                sumNum1 = Math.floor(Math.random() * 9) + 1;
+                sumNum2 = Math.floor(Math.random() * 9) + 1;
+            }
+            if (sumInput == "2-1") {
+                sumNum1 = Math.floor(Math.random() * 90) + 10;
+                sumNum2 = Math.floor(Math.random() * 9) + 1;
+            }
+            if (sumInput == "2-2") {
+                sumNum1 = Math.floor(Math.random() * 90) + 10;
+                sumNum2 = Math.floor(Math.random() * 90) + 10;
+            }
+            if (sumInput == "3-2") {
+                sumNum1 = Math.floor(Math.random() * 900) + 100;
+                sumNum2 = Math.floor(Math.random() * 90) + 10;
+            }
+            if (sumInput == "3-3") {
+                sumNum1 = Math.floor(Math.random() * 900) + 100;
+                sumNum2 = Math.floor(Math.random() * 900) + 100;
+            }
+            let html = `
+        <div class="question-answer">
+        <span class="question">
+        <span class="num sumNum1">${sumNum1}</span>  x <span class="sumNum2">${sumNum2}</span> = <span class="answer">?</span> <button class="show_answer">Show</button>
+        </span>
+        </div>`
+            content.insertAdjacentHTML("beforeend", html)
+
+        }
     }
     let buttons = document.querySelectorAll("button.show_answer")
 
@@ -124,6 +157,16 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 let sumNum2 = parent.querySelector(".sumNum2").textContent
                 parent.querySelector("span.answer").textContent = Number(sumNum1) + Number(sumNum2)
             }
+            else if (input == "mul") {
+                // parent.querySelector("span.answer").textContent = Math.cbrt(num)
+                // let sumInput = document.querySelector('input[name="optionsForSum"]:checked').value
+                // if(sumInput == "1-1"){
+
+                // }
+                let sumNum1 = parent.querySelector(".sumNum1").textContent
+                let sumNum2 = parent.querySelector(".sumNum2").textContent
+                parent.querySelector("span.answer").textContent = Number(sumNum1) * Number(sumNum2)
+            }
             button.style.display = "none"
         })
     })
@@ -138,7 +181,7 @@ let inputs = document.querySelectorAll("input[name='numberOfDigits']")
 inputs.forEach((input) => {
     input.addEventListener('click', () => {
         let form = document.querySelector("form#optionsForSum")
-        if (input.value == "sum") {
+        if (input.value == "sum" || input.value == "mul") {
             form.style.display = "flex"
         } else {
             form.style.display = "none"

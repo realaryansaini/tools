@@ -29,6 +29,7 @@ html {
     box-sizing: border-box;
     counter-reset: question;
     /* Initialize/reset the counter */
+    margin-top: 10px;
 }
 
 .download-btn {
@@ -89,7 +90,7 @@ html {
     margin-bottom: 5px;
     counter-increment: question;
     /* Increment the counter for each .question */
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
@@ -97,7 +98,7 @@ html {
 button.show_answer {
     position: absolute;
     top: 4px;
-    left: 200px;
+    left: 170px;
     border: none;
     padding: 5px 10px;
     font-size: .8rem;
@@ -113,12 +114,15 @@ button.show_answer {
 }
 
 sup {
-    font-size: 1rem;
+    font-size: .8rem;
     opacity: 70%;
 }
 
 form {
-    padding: 20px 0;
+    margin: 10px 0 0px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
 }
 
 
@@ -131,13 +135,17 @@ input[type="radio"] {
 
 label {
     display: inline-block;
-    padding: 10px;
+    /* padding: 10px; */
     background: #eee;
     border-radius: 4px;
     font-size: .8rem;
     cursor: pointer;
     transition: background 0.2s;
-    margin: 0 5px;
+    /* margin: 0 5px; */
+    padding: 8px;
+    text-align: center;
+    /* margin: 0 5px 5px 0; */
+    width: 28px;
 }
 
 input[type="radio"]:checked+label {
@@ -148,3 +156,17 @@ input[type="radio"]:checked+label {
 form#optionsForSum{
     display:none;
 }
+
+/* @media  screen and (max-width:500px){
+    form{
+        width: calc(100% - 35px);
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        gap: 15px;
+
+    }
+    label{
+        width: 100%;
+
+    }
+} */
