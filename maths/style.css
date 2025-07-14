@@ -17,17 +17,18 @@ html {
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 .content {
     width: min(700px, 100%);
     background-color: #f5f5f5;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 20px;
+    grid-template-columns: auto auto auto;
+    /* gap: 15px; */
+    column-gap: 15px;
 }
 
 .question {
@@ -40,26 +41,47 @@ html {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 8px 16px;
+    padding: 8px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     z-index: 100;
+    font-size: 12px;
+}
+.clear {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    /* padding: 8px; */
+    background-color: rgb(231, 131, 231);
+    color: white;
+    border: none;
+    cursor: pointer;
+    /* width: 20px; */
+    z-index: 100;
+    position: fixed;
+    padding: 5px;
+    border-radius: 10px;
+}
+.clear img{
+    width: 20px;
+    z-index: 1000;
 }
 
 .refresh-btn {
     position: absolute;
     top: 10px;
     left: 10px;
-    padding: 8px 16px;
+    padding: 8px;
     background-color: #2196F3;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     z-index: 100;
+    font-size: 12px;
 }
 
 #input {
@@ -86,13 +108,13 @@ html {
 }
 
 .math-question {
-    font-size: 2rem;
+    font-size: 20px;
     /* margin: 20px 0; */
     text-align: end;
 }
 
 .math-symbol {
-    font-size: 2rem;
+    font-size: 1.5rem;
     /* margin: 10px 0; */
     align-self: flex-end;
     grid-row: 1/3;
@@ -104,7 +126,7 @@ html {
     /* margin: 0 auto; */
     /* transform: translate(0,15px); */
     grid-column: span 2;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
 }
 
@@ -115,22 +137,22 @@ html {
 }
 
 
-@media screen and (max-width:500px) {
+/* @media screen and (max-width:500px) {
 
     .content {
         grid-template-columns: auto auto auto;
     }
 
     .math-question {
-        font-size: 1.5rem;
+        font-size: 20px;
     }
 
 
 
-}
+} */
 
 
-
+/* 
 input[type="radio"] {
     position: absolute;
     opacity: 0;
@@ -156,4 +178,101 @@ input[type="radio"]:checked+label {
 
 form{
     margin-bottom: 5px;
+} */
+
+
+form {
+    margin: 10px 0 0px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+label {
+    display: inline-block;
+    /* padding: 10px; */
+    background: #eee;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    /* margin: 0 5px; */
+    padding: 7px;
+    text-align: center;
+    /* margin: 0 5px 5px 0; */
+    /* width: 28px; */
+}
+
+input[type="radio"]:checked+label {
+    background: #009688cf;
+    color: #fff;
+}
+
+form#optionsForSum{
+    margin-bottom: 5px;
+}
+
+
+
+/* .divide{
+    display: grid;
+    grid-template-columns: auto auto;
+} */
+
+div.content:has(> div.divide) {
+    /* gap: 5px; */
+    row-gap: 50px;
+    padding: 20px;
+    column-gap: 3px;
+    grid-template-columns: auto auto;
+
+}
+
+ .divide{
+    display: flex;
+    gap: 1px;
+    justify-content: end;
+    font-size: 20px;
+    counter-increment: question;
+    /* margin: 10px 5px; */
+    /* margin-bottom: 50px; */
+ }
+
+ .divide::before {
+    content: counter(question) ". ";
+    /* align-items: center; */
+    margin-top: 2px;
+    color: rgba(187, 6, 6, 0.815);
+    /* Display the counter before each question */
+}
+
+ /* .divideContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 19px;
+    font-size: 30px;
+    margin-bottom: 20px;
+ } */
+
+ 
+
+
+/* .divide div.nth-child(1){
+    align-items: right;
+} */
+ .divide div{
+    padding: 2px 5px;
+ }
+.divide div:nth-child(2) {
+
+  border-left: 1px solid;
+  border-top: 1px solid;
 }
