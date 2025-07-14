@@ -8,20 +8,40 @@
 
 // Refresh button event listener
 document.getElementById('refreshBtn').addEventListener('click', () => {
+    const date = new Date();
+    const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+    document.querySelector("#date").innerText = formattedDate
+
     let input = document.querySelector("#input").value
     let arr = JSON.parse(input)
-    for (let i = 0; i < arr.length; i=i+2) {
-        let content = document.querySelector("div.content")
-        let html = `
-        <div class="question-answer">
-                <span class="question">
-                    ${arr[i]}
-                </span>
-                <span class="answer">
-                    ${arr[i+1]}
-                </span>
+    let onlyQuestion = document.querySelector("input[name='onlyQuestion']")
+    if (onlyQuestion.checked) {
+
+        for (let i = 0; i < arr.length; i = i + 1) {
+            let content = document.querySelector("div.content")
+            let html = `
+            <div class="question-answer">
+            <span class="question font-light">
+            ${arr[i]}
+            </span>
             </div>`
-        content.insertAdjacentHTML("beforeend",html)
+            content.insertAdjacentHTML("beforeend", html)
+        }
+    } else {
+
+        for (let i = 0; i < arr.length; i = i + 2) {
+            let content = document.querySelector("div.content")
+            let html = `
+            <div class="question-answer">
+            <span class="question">
+            ${arr[i]}
+            </span>
+            <span class="answer">
+            ${arr[i + 1]}
+            </span>
+            </div>`
+            content.insertAdjacentHTML("beforeend", html)
+        }
     }
 });
 

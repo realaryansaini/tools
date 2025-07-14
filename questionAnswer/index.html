@@ -11,10 +11,20 @@
 
 <body>
     <div class="container">
-        <input type="text" name="input" id="input">
+        <div class="inputContainer">
+            <input type="text" name="input" id="input">
+            <form>
+                <input type="checkbox" name="onlyQuestion" id="onlyQuestion">
+                <label for="onlyQuestion">Only Question</label>
+            </form>
+        </div>
 
 
         <div class="content" id="content">
+            <div class="header">
+                <!-- <span class="title">First in india</span> -->
+                <span id="date"></span>
+            </div>
             <!-- <div class="question-answer">
                 <span class="question">
                     what is the full form of CBSE?
@@ -33,7 +43,7 @@
                 </span>
             </div> -->
         </div>
-        <button class="refresh-btn" id="refreshBtn">Show</button>
+        <button class="refresh-btn" id="refreshBtn">Generate</button>
         <button class="download-btn" id="downloadBtn">Download</button>
     </div>
 

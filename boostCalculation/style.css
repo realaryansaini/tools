@@ -43,6 +43,7 @@ html {
     border-radius: 4px;
     cursor: pointer;
     z-index: 100;
+    font-size: 12px;
 }
 
 .refresh-btn {
@@ -56,6 +57,7 @@ html {
     border-radius: 4px;
     cursor: pointer;
     z-index: 100;
+    font-size: 12px;
 }
 
 #input {
@@ -109,7 +111,8 @@ button.show_answer {
 
 
 .question::before {
-    content: counter(question) "). ";
+    content: counter(question) ". ";
+    color: rgba(187, 6, 6, 0.815);
     /* Display the counter before each question */
 }
 
@@ -138,11 +141,11 @@ label {
     /* padding: 10px; */
     background: #eee;
     border-radius: 4px;
-    font-size: .8rem;
+    font-size: 12px;
     cursor: pointer;
     transition: background 0.2s;
     /* margin: 0 5px; */
-    padding: 8px;
+    padding: 7px;
     text-align: center;
     /* margin: 0 5px 5px 0; */
     width: 28px;
