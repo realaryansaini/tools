@@ -9,6 +9,13 @@ html {
     justify-content: center;
     box-sizing: border-box;
     scrollbar-gutter: stable;
+
+    user-select: none;
+    -webkit-user-select: none;
+    /* Safari, Chrome */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
 }
 
 .container {
@@ -29,6 +36,7 @@ html {
     grid-template-columns: auto auto auto;
     /* gap: 15px; */
     column-gap: 15px;
+    margin-top: 5px;
 }
 
 .question {
@@ -50,13 +58,15 @@ html {
     z-index: 100;
     font-size: 12px;
 }
+
 .clear {
     position: absolute;
     bottom: 10px;
     right: 10px;
     /* padding: 8px; */
-    background-color: rgb(231, 131, 231);
+    background-color: rgb(48 170 158);
     color: white;
+    
     border: none;
     cursor: pointer;
     /* width: 20px; */
@@ -65,9 +75,11 @@ html {
     padding: 5px;
     border-radius: 10px;
 }
-.clear img{
+
+.clear img {
     width: 20px;
     z-index: 1000;
+    filter: brightness(0) invert(1);
 }
 
 .refresh-btn {
@@ -188,6 +200,9 @@ form {
     gap: 5px;
 }
 
+form#formForTable , form#optionsForSum{
+    display: none;
+}
 
 input[type="radio"] {
     position: absolute;
@@ -216,11 +231,13 @@ input[type="radio"]:checked+label {
     color: #fff;
 }
 
+
 form#optionsForSum{
-    margin-bottom: 5px;
+    grid-template-columns: repeat(6 , auto);
 }
-
-
+form#formForTable{
+    grid-template-columns: repeat(9 , auto);
+}
 
 /* .divide{
     display: grid;
@@ -236,7 +253,12 @@ div.content:has(> div.divide) {
 
 }
 
- .divide{
+div.content:has(>div.multiplicationTable) {
+    display: flex;
+    flex-direction: column;
+}
+
+.divide {
     display: flex;
     gap: 1px;
     justify-content: end;
@@ -244,9 +266,9 @@ div.content:has(> div.divide) {
     counter-increment: question;
     /* margin: 10px 5px; */
     /* margin-bottom: 50px; */
- }
+}
 
- .divide::before {
+.divide::before {
     content: counter(question) ". ";
     /* align-items: center; */
     margin-top: 2px;
@@ -254,7 +276,7 @@ div.content:has(> div.divide) {
     /* Display the counter before each question */
 }
 
- /* .divideContainer{
+/* .divideContainer{
     display: flex;
     flex-wrap: wrap;
     gap: 19px;
@@ -262,17 +284,47 @@ div.content:has(> div.divide) {
     margin-bottom: 20px;
  } */
 
- 
+
 
 
 /* .divide div.nth-child(1){
     align-items: right;
 } */
- .divide div{
+.divide div {
     padding: 2px 5px;
- }
-.divide div:nth-child(2) {
+}
 
-  border-left: 1px solid;
-  border-top: 1px solid;
+.divide div:last-child {
+    border-left: 1px solid;
+    border-top: 1px solid;
+}
+
+
+/* mutliplication section */
+
+.multiplicationTable {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    color: #11857a;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.title {
+    counter-increment: title;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    /* font-weight: bold; */
+
+    color: #a228b7;
+    text-transform: uppercase;
+}
+
+.title:before{
+    content: counter(title) ".";
+    color: #a228b7;
 }

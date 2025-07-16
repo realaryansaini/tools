@@ -1,4 +1,17 @@
+async function pasteClipboard() {
+  try {
+    const text = await navigator.clipboard.readText();
+    document.getElementById("input").value = text;
+  } catch (err) {
+    alert("Unable to access clipboard: " + err);
+  }
+}
 
+
+
+document.querySelector("input").addEventListener("click" , ()=>[
+    pasteClipboard()
+])
 
 
 
@@ -61,6 +74,16 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     }
 });
 
+
+function generateRandomString(length = 5) {
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+
 // Download button event listener
 document.getElementById('downloadBtn').addEventListener('click', function () {
     const content = document.getElementById('content');
@@ -68,7 +91,7 @@ document.getElementById('downloadBtn').addEventListener('click', function () {
     html2canvas(content).then(canvas => {
         // Create a temporary link to download the image
         const link = document.createElement('a');
-        link.download = 'word-meaning.png';
+        link.download = `word-meaning-${generateRandomString(5)}.png`;
         link.href = canvas.toDataURL('image/png');
         link.click();
     });
