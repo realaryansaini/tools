@@ -265,12 +265,12 @@ inputs.forEach((input) => {
 //     })
 // })
 // Download button event listener
-document.getElementById('downloadBtn').addEventListener('click', function () {
-    const content = document.getElementById('content');
-    content.innerHTML = ""
+// document.getElementById('downloadBtn').addEventListener('click', function () {
+//     const content = document.getElementById('content');
+//     content.innerHTML = ""
 
-    let form = document.querySelector("form#optionsForSum")
-    form.style.display = "none"
+//     let form = document.querySelector("form#optionsForSum")
+//     form.style.display = "none"
 
 
     // html2canvas(content).then(canvas => {
@@ -280,4 +280,40 @@ document.getElementById('downloadBtn').addEventListener('click', function () {
     //     link.click();
     // });
 
+// });
+
+
+function generateRandomString(length = 5) {
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+
+// Download button event listener
+document.getElementById('downloadBtn').addEventListener('click', function () {
+    const content = document.getElementById('content');
+    document.querySelectorAll(".show_answer").forEach((item)=>{
+ item.style.display = "none"
+    })
+    
+
+    html2canvas(content).then(canvas => {
+        // Create a temporary link to download the image
+        const link = document.createElement('a');
+        link.download = `math-question-${generateRandomString(5)}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
 });
+
+document.querySelector("button.clear").addEventListener("click", () => {
+    let content = document.querySelector(".content")
+    // let formForTable = document.querySelector("form#formForTable")
+    // let optionsForSum = document.querySelector("form#optionsForSum")
+    // formForTable.style.display = "none"
+    // optionsForSum.style.display = "none"
+    content.innerHTML = ""
+})

@@ -135,8 +135,6 @@ html {
 .underline {
     border-bottom: 2px solid #333;
     width: 100%;
-    /* margin: 0 auto; */
-    /* transform: translate(0,15px); */
     grid-column: span 2;
     margin-bottom: 15px;
 
@@ -264,17 +262,17 @@ div.content:has(>div.multiplicationTable) {
     justify-content: end;
     font-size: 20px;
     counter-increment: question;
+    /* counter-increment: divide; */
     /* margin: 10px 5px; */
     /* margin-bottom: 50px; */
 }
 
-.divide::before {
+/* .divide::before {
     content: counter(question) ". ";
-    /* align-items: center; */
     margin-top: 2px;
     color: rgba(187, 6, 6, 0.815);
-    /* Display the counter before each question */
-}
+} */
+
 
 /* .divideContainer{
     display: flex;
@@ -328,3 +326,16 @@ div.content:has(>div.multiplicationTable) {
     content: counter(title) ".";
     color: #a228b7;
 }
+
+
+/* #formForDivide{
+    display: none;
+    grid-template-columns: repeat(5 , auto);
+} */
+ /* .optionOnlyForDivide{
+    display: none;
+ } */
+
+ /* .onlyForTable{
+    display: none;
+ } */

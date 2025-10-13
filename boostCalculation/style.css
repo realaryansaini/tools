@@ -173,3 +173,26 @@ form#optionsForSum{
 
     }
 } */
+
+.clear {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    /* padding: 8px; */
+    background-color: rgb(48 170 158);
+    color: white;
+    
+    border: none;
+    cursor: pointer;
+    /* width: 20px; */
+    z-index: 100;
+    position: fixed;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.clear img {
+    width: 20px;
+    z-index: 1000;
+    filter: brightness(0) invert(1);
+}

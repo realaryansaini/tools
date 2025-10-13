@@ -68,14 +68,44 @@ inputs.forEach((input) => {
     input.addEventListener('click', () => {
         let optionsForSum = document.querySelector("form#optionsForSum")
         let formForTable = document.querySelector("form#formForTable")
+        
         if (input.value == "addition" || input.value == "substraction" || input.value == "multiply" || input.value == "divide") {
             optionsForSum.style.display = "grid"
             formForTable.style.display = "none"
+            if(input.value == "multiply" || input.value == "divide"){
+                // optionsForSum.style.display = "none"
+                optionsForSum.style.gridTemplateColumns = "repeat(7, auto);"
+                document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
+                    item.style.display = "flex"
+                })
+                document.querySelectorAll(".notForDivide").forEach((item)=>{
+                    item.style.display = "none"
+                })
+            }else{
+                document.querySelectorAll(".notForDivide").forEach((item)=>{
+                    item.style.display = "flex"
+                })
+                // formForDivide.style.gridTempleteColoums = "repeat(6 , auto);"
+                // optionsForSum.style.display = "grid"
+                // formForDivide.style.display = "none"
+                document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
+                    item.style.display = "none"
+                })
+                
+            }
 
+            
+            
         }
         else if (input.value == "table") {
             formForTable.style.display = "grid"
-            optionsForSum.style.display = "none"
+            // optionsForSum.style.display = "none"
+            // formForDivide.style.display = "none"
+            document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
+                    item.style.display = "none"
+                })
+                
+            
         }
 
     })
@@ -84,7 +114,7 @@ inputs.forEach((input) => {
 function getNums(input) {
     let num1 = 0
     let num2 = 0
-    if (input == "2-1") {
+    if (input == "2-1" || input == "1-2") {
         num1 = Math.floor(Math.random() * 90) + 10;
         num2 = Math.floor(Math.random() * 9) + 1;
     }
@@ -95,6 +125,18 @@ function getNums(input) {
     else if (input == "3-1") {
         num1 = Math.floor(Math.random() * 900) + 100;
         num2 = Math.floor(Math.random() * 9) + 1;
+    }
+    else if (input == "10-20-3") {
+        num1 = Math.floor(Math.random() * 11) + 10;
+        num2 = Math.floor(Math.random() * 900) + 100;
+    }
+    else if (input == "10-20-4") {
+        num1 = Math.floor(Math.random() * 11) + 10;
+        num2 = Math.floor(Math.random() * 9000) + 1000;
+    }
+    else if (input == "10-40-4") {
+        num1 = Math.floor(Math.random() * 31) + 10;
+        num2 = Math.floor(Math.random() * 9000) + 1000;
     }
     else if (input == "3-2") {
         num1 = Math.floor(Math.random() * 900) + 100;
@@ -171,7 +213,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let Numbers = getNums(input)
             let num1 = Numbers[0]
             let num2 = Numbers[1]
-            let html = `<div class="divide">
+            let html = `<div class="divide question">
                 <div class="divisor">${Math.min(num1, num2)}</div>
                 <div class="divident">${Math.max(num1, num2)}</div>
             </div>`
@@ -242,6 +284,9 @@ function generateRandomString(length = 5) {
 // Download button event listener
 document.getElementById('downloadBtn').addEventListener('click', function () {
     const content = document.getElementById('content');
+    // document.querySelectorAll("div.divide.question::before").forEach((item)=>{
+    //     item.style.display = "none"
+    // })
 
     html2canvas(content).then(canvas => {
         // Create a temporary link to download the image
@@ -259,4 +304,12 @@ document.querySelector("button.clear").addEventListener("click", () => {
     formForTable.style.display = "none"
     optionsForSum.style.display = "none"
     content.innerHTML = ""
+
 })
+
+// document.querySelectorAll('input[name="calculationType]"').forEach((button) => {
+//     button.addEventListener("click", () => {
+        
+//     })
+// })
+
