@@ -70,6 +70,11 @@ inputs.forEach((input) => {
         let formForTable = document.querySelector("form#formForTable")
         
         if (input.value == "addition" || input.value == "substraction" || input.value == "multiply" || input.value == "divide") {
+
+            document.querySelectorAll('#optionsForSum > label:not(.onlyForShapes)').forEach((item)=>{
+                item.style.display = "flex"
+            })
+
             optionsForSum.style.display = "grid"
             formForTable.style.display = "none"
             if(input.value == "multiply" || input.value == "divide"){
@@ -94,17 +99,40 @@ inputs.forEach((input) => {
                 
             }
 
+
+            document.querySelectorAll("label.onlyForShapes").forEach((item)=>{
+                item.style.display = "none"
+            })
+
             
             
         }
         else if (input.value == "table") {
             formForTable.style.display = "grid"
-            // optionsForSum.style.display = "none"
+            optionsForSum.style.display = "none"
             // formForDivide.style.display = "none"
             document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
                     item.style.display = "none"
                 })
                 
+            
+        }
+        else if (input.value == "perimeter" || input.value == "area") {
+            formForTable.style.display = "none"
+            optionsForSum.style.display = "grid"
+            // formForDivide.style.display = "none"
+
+            // document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
+            //         item.style.display = "none"
+            //     })
+            document.querySelectorAll('#optionsForSum > label:not(.onlyForShapes)').forEach((item)=>{
+                item.style.display = "none"
+            })
+            document.querySelectorAll('form  > label.onlyForShapes').forEach((item)=>{
+                item.style.display = "flex"
+            })
+
+          
             
         }
 
@@ -181,7 +209,6 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     // let input = document.querySelector("#input").value
     let input = document.querySelector('input[name="optionsForSum"]:checked').value;
     let calculationType = document.querySelector("input[name='calculationType']:checked").value
-    // console.log(selectedValue);
     // if (calculationType == "addition") {
 
     if (calculationType == "addition") {
@@ -266,6 +293,79 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             </div>`
         document.querySelector(".content").insertAdjacentHTML("beforeend", html)
 
+    }
+    if(calculationType == "perimeter" || calculationType == "area"){
+         if(input == "rec"){
+            console.log("you have generated a rec")
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of rectangle</div>`)
+            for(let i = 1 ; i <= 12 ; i++){
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                let num2 = Math.floor(Math.random() * 90) + 10;
+                let html = `<div class="rectangle">
+                <div class="length-label">${num1}cm</div>
+                <div class="width-label">${num2}cm</div>
+            </div>`
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+            }
+         }
+         if(input == "sq"){
+            console.log("you have generated a rec")
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of square</div>`)
+            for(let i = 1 ; i <= 12 ; i++){
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                // let num2 = Math.floor(Math.random() * 90) + 10;
+                let html = `<div class="rectangle square">
+                <div class="length-label">${num1}cm</div>
+                </div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+            }
+        }
+         if(input == "cir"){
+            console.log("you have generated a rec")
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of circle</div>`)
+            for(let i = 1 ; i <= 12 ; i++){
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                // let num2 = Math.floor(Math.random() * 90) + 10;
+                let html = `<div class="circle"><svg width="auto" height="auto" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="110" cy="110" r="100" stroke="black" stroke-width="4" fill="white" />
+
+                    <line x1="110" y1="110" x2="110" y2="10" stroke="black" stroke-width="2" />
+
+                    <text x="140" y="70" text-anchor="middle" font-size="18" fill="black" font-weight="bold">
+                        ${num1}cm
+                    </text>
+                </svg>
+            </div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+            }
+        }
+        if(input == "tri"){
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of triangle</div>`)
+            
+            for(let i = 1 ; i <= 12 ; i++){
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                let num2 = Math.floor(Math.random() * 90) + 10;
+                let num3 = Math.floor(Math.random() * 90) + 10;
+                // let num2 = Math.floor(Math.random() * 90) + 10;
+                let html = ` <div class="triangle">
+                <svg width="100%" height="100%" viewBox="60 80 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M85.843 311.828C99.1021 311.98 112.412 313.617 125.675 313.46C192.446 312.698 253 318.5 334.836 313.428C337.022 313.003 317.099 272.821 291.342 227.968C263.178 178.924 239.144 126.682 200 85C177 85 94.3401 258.649 81.1177 281.612C75.6425 291.118 69.4588 300.629 65 310.658"
+                        stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <!-- Side labels (approximate, manually placed) -->
+                    <text x="180" y="300" font-size="14" fill="blue" font-weight="bold">${num1}cm</text>
+                    <text x="230" y="190" font-size="14" fill="blue" font-weight="bold"
+                        transform="rotate(-28 270,250)">${num2}cm</text>
+                    <text x="150" y="190" font-size="14" fill="blue" font-weight="bold"
+                        transform="rotate(38 120,180)">${num3}cm</text>
+                </svg>
+
+            </div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+            }
+
+         }
     }
 
 });

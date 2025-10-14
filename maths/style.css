@@ -66,7 +66,7 @@ html {
     /* padding: 8px; */
     background-color: rgb(48 170 158);
     color: white;
-    
+
     border: none;
     cursor: pointer;
     /* width: 20px; */
@@ -198,7 +198,8 @@ form {
     gap: 5px;
 }
 
-form#formForTable , form#optionsForSum{
+form#formForTable,
+form#optionsForSum {
     display: none;
 }
 
@@ -230,11 +231,12 @@ input[type="radio"]:checked+label {
 }
 
 
-form#optionsForSum{
-    grid-template-columns: repeat(6 , auto);
+form#optionsForSum {
+    grid-template-columns: repeat(6, auto);
 }
-form#formForTable{
-    grid-template-columns: repeat(9 , auto);
+
+form#formForTable {
+    grid-template-columns: repeat(9, auto);
 }
 
 /* .divide{
@@ -255,6 +257,16 @@ div.content:has(>div.multiplicationTable) {
     display: flex;
     flex-direction: column;
 }
+
+div.content:has(>div.rectangle) , div.content:has(>div.triangle)  , div.content:has(>div.circle)  {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 50px;
+    /* flex-direction: column; */
+}
+
+
 
 .divide {
     display: flex;
@@ -313,29 +325,167 @@ div.content:has(>div.multiplicationTable) {
 }
 
 .title {
-    counter-increment: title;
-    font-size: 1.2rem;
+    position: absolute;
+    z-index: 300;
+    font-size: 1rem;
     margin-bottom: 10px;
     /* font-weight: bold; */
+    transform: translate(0, -24px);
 
-    color: #a228b7;
+    /* color: #a228b7; */
+    color: red;
     text-transform: uppercase;
 }
 
-.title:before{
-    content: counter(title) ".";
-    color: #a228b7;
-}
+
 
 
 /* #formForDivide{
     display: none;
     grid-template-columns: repeat(5 , auto);
 } */
- /* .optionOnlyForDivide{
+/* .optionOnlyForDivide{
     display: none;
  } */
 
- /* .onlyForTable{
+/* .onlyForTable{
     display: none;
  } */
+
+/* .onlyForShapes{
+    display: none;
+ } */
+
+.rec {
+    border: 2px solid black;
+    /* padding: 50px 20px; */
+    /* height: 1/2; */
+    aspect-ratio: 2/1;
+    /* background-color: red; */
+    margin-bottom: 20px;
+    margin: 10px 0 20px 0;
+}
+
+.rec::before {
+    position: absolute;
+    content: "15cm";
+    transform: translate(calc(100vw/10), 10px);
+}
+
+.rec::after {
+    position: absolute;
+    content: "10cm";
+    transform: translate(20px, -20px);
+}
+
+
+.rectangle {
+    /* height: calc(100vh/5);    */
+    aspect-ratio: 2/1;
+    background-color: lightblue;
+    border: 2px solid blue;
+    position: relative;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+}
+
+.square {
+    aspect-ratio: 1/1;
+}
+
+/* Length label: top center (inside) */
+.length-label {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .8rem;
+}
+
+/* Width label: left center (inside), rotated */
+.width-label {
+    position: absolute;
+    top: 80%;
+    left: 14px;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    font-weight: bold;
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .8rem;
+}
+
+
+
+.triangle-container {
+    position: relative;
+    width: auto;
+    aspect-ratio: 4/3;
+    /* height: 240px; */
+    background-color: lightblue;
+    clip-path: polygon(20px 220px, 300px 220px, 200px 20px);
+    border: 2px solid blue;
+    /* zoom: 80%; */
+}
+
+.label-base {
+    position: absolute;
+    bottom: 27px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.label-left {
+    position: absolute;
+    left: 89px;
+    top: 65%;
+    transform: rotate(-49deg);
+    transform-origin: left center;
+    font-weight: bold;
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.label-right {
+    position: absolute;
+    right: 65px;
+    top: 66%;
+    transform: rotate(64deg);
+    transform-origin: right center;
+    font-weight: bold;
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.triangle{
+    margin-bottom: 10px;
+}
+
+.circle svg{
+   width: auto;
+   aspect-ratio: 1/1;
+}
+
+.triangle svg text {
+  font-size: 20px;
+  fill: black;
+}

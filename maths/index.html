@@ -24,6 +24,10 @@
             <label for="divide">Divide</label>
             <input type="radio" id="table" name="calculationType" value="table">
             <label for="table">Table</label>
+            <input type="radio" id="perimeter" name="calculationType" value="perimeter">
+            <label for="perimeter">Peri</label>
+            <input type="radio" id="area" name="calculationType" value="area">
+            <label for="area">Area</label>
             <!-- <input type="radio" id="divide" name="calculationType" value="divide">
             <label for="divide">Divide</label> -->
         </form>
@@ -58,11 +62,20 @@
             <label for="5-3">5-3</label>
             <input type="radio" id="5-4" name="optionsForSum" value="5-4">
             <label for="5-4">5-4</label>
-            <input class="notForDivide" type="radio" id="5-5" name="optionsForSum" value="5-5">
+            <input type="radio" id="5-5" name="optionsForSum" value="5-5">
             <label class="notForDivide" for="5-5">5-5</label>
+            <input class="onlyForShapes" type="radio" id="rec" name="optionsForSum" value="rec">
+            <label class="onlyForShapes" for="rec">Rec</label>
+            <input class="onlyForShapes" type="radio" id="sq" name="optionsForSum" value="sq">
+            <label class="onlyForShapes" for="sq">Sq</label>
+            <input class="onlyForShapes" type="radio" id="tri" name="optionsForSum" value="tri">
+            <label class="onlyForShapes" for="tri">Tri</label>
+            <input class="onlyForShapes" type="radio" id="cir" name="optionsForSum" value="cir">
+            <label class="onlyForShapes" for="cir">Cir</label>
+
         </form>
 
-    
+
 
         <form id="formForTable">
 
@@ -74,15 +87,11 @@
 
 
         <div class="content" id="content">
-            <!-- <div class="title">Table of 2</div>
-            <div class="multiplicationTable">
-                <div>
-                    <span class="tableOf">2</span> x <span class="incrementNum">1</span> =
-                    <span class="multipliedAnwer">2</span>
-                </div>
-            </div> -->
 
         </div>
+
+
+
         <button class="refresh-btn" id="refreshBtn">Generate</button>
         <button class="download-btn" id="downloadBtn">Download</button>
         <button class="clear"><img src="refresh.png" alt=""></button>
