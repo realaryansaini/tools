@@ -258,7 +258,7 @@ div.content:has(>div.multiplicationTable) {
     flex-direction: column;
 }
 
-div.content:has(>div.rectangle) , div.content:has(>div.triangle)  , div.content:has(>div.circle)  {
+div.content:has(>div.rectangle) , div.content:has(>div.triangle)  , div.content:has(>div.circle) ,div.content:has(>div.parellelogram) {
     /* display: flex; */
     display: grid;
     grid-template-columns: auto auto;
@@ -488,4 +488,12 @@ div.content:has(>div.rectangle) , div.content:has(>div.triangle)  , div.content:
 .triangle svg text {
   font-size: 20px;
   fill: black;
+}
+
+
+.parellelogram{
+    margin-bottom: 20px;
+}
+.parellelogram svg{
+    padding: 5px;
 }

@@ -296,20 +296,18 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     }
     if(calculationType == "perimeter" || calculationType == "area"){
          if(input == "rec"){
-            console.log("you have generated a rec")
             document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of rectangle</div>`)
             for(let i = 1 ; i <= 12 ; i++){
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = `<div class="rectangle">
-                <div class="length-label">${num1}cm</div>
-                <div class="width-label">${num2}cm</div>
+                <div class="length-label">${Math.max(num1,num2)}cm</div>
+                <div class="width-label">${Math.min(num1,num2)}cm</div>
             </div>`
             document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
             }
          }
          if(input == "sq"){
-            console.log("you have generated a rec")
             document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of square</div>`)
             for(let i = 1 ; i <= 12 ; i++){
                 let num1 = Math.floor(Math.random() * 90) + 10;
@@ -321,8 +319,11 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             }
         }
          if(input == "cir"){
-            console.log("you have generated a rec")
+            if (calculationType == "perimeter"){
+                 calculationType = "circumference"
+            }
             document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of circle</div>`)
+            
             for(let i = 1 ; i <= 12 ; i++){
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 // let num2 = Math.floor(Math.random() * 90) + 10;
@@ -346,28 +347,115 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 let num2 = Math.floor(Math.random() * 90) + 10;
                 let num3 = Math.floor(Math.random() * 90) + 10;
+                let html = ""
                 // let num2 = Math.floor(Math.random() * 90) + 10;
-                let html = ` <div class="triangle">
-                <svg width="100%" height="100%" viewBox="60 80 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                if(calculationType == "perimeter"){
+
+                    html = ` <div class="triangle">
+                    <svg width="100%" height="100%" viewBox="60 80 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M85.843 311.828C99.1021 311.98 112.412 313.617 125.675 313.46C192.446 312.698 253 318.5 334.836 313.428C337.022 313.003 317.099 272.821 291.342 227.968C263.178 178.924 239.144 126.682 200 85C177 85 94.3401 258.649 81.1177 281.612C75.6425 291.118 69.4588 300.629 65 310.658"
-                        stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                    d="M85.843 311.828C99.1021 311.98 112.412 313.617 125.675 313.46C192.446 312.698 253 318.5 334.836 313.428C337.022 313.003 317.099 272.821 291.342 227.968C263.178 178.924 239.144 126.682 200 85C177 85 94.3401 258.649 81.1177 281.612C75.6425 291.118 69.4588 300.629 65 310.658"
+                    stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round"
+                    stroke-linejoin="round" />
                     <!-- Side labels (approximate, manually placed) -->
                     <text x="180" y="300" font-size="14" fill="blue" font-weight="bold">${num1}cm</text>
                     <text x="230" y="190" font-size="14" fill="blue" font-weight="bold"
-                        transform="rotate(-28 270,250)">${num2}cm</text>
+                    transform="rotate(-28 270,250)">${num2}cm</text>
                     <text x="150" y="190" font-size="14" fill="blue" font-weight="bold"
-                        transform="rotate(38 120,180)">${num3}cm</text>
-                </svg>
-
-            </div>`
+                    transform="rotate(38 120,180)">${num3}cm</text>
+                    </svg>
+                    
+                    </div>`
+                }else if (calculationType == "area"){
+                    html = ` <div class="triangle">
+                    <svg width="100%" height="100%" viewBox="60 80 280 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                    d="M85.843 311.828C99.1021 311.98 112.412 313.617 125.675 313.46C192.446 312.698 253 318.5 334.836 313.428C337.022 313.003 317.099 272.821 291.342 227.968C263.178 178.924 239.144 126.682 200 85C177 85 94.3401 258.649 81.1177 281.612C75.6425 291.118 69.4588 300.629 65 310.658"
+                    stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                    
+                    <!-- Perpendicular line from top of triangle to base -->
+                    <line x1="200" y1="85" x2="200" y2="313.5" stroke="black" stroke-width="4" stroke-dasharray="6 4"/>
+                    
+                    <!-- Side labels (approximate, manually placed) -->
+                    <text x="210" y="250" font-size="20" fill="blue" font-weight="bold">${num2}cm</text>
+                    <text x="180" y="340" font-size="20" fill="blue" font-weight="bold">${num1}cm</text>
+                    </svg>
+                    
+                    
+                    </div>`
+                    
+                }
                 document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
             }
+            
+        }
+        if(input == "pgram"){
+            
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType}</div>`)
+            let html = ""
+            for(let i = 1;i<=12;i++){
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                let num2 = Math.floor(Math.random() * 90) + 10;
+                if(calculationType == "area"){
 
-         }
+                    
+                    html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parallelogram tightly fit in viewBox -->
+                    <polygon points="0,100 50,0 200,0 150,100" 
+                    fill="none" 
+                    stroke="black" 
+                    stroke-width="2"/>
+                    
+                    <!-- Altitude from top-left corner -->
+                    <line x1="50" y1="0" x2="50" y2="100" 
+                    stroke="blue" 
+                    stroke-width="2" 
+                    stroke-dasharray="5 3"/>
+                    
+                    <!-- Height label -->
+                    <text x="55" y="50" font-size="15" fill="blue">${Math.min(num1,num2)}cm</text>
+                    
+                    <!-- Base label -->
+                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1,num2)}cm</text>
+                    
+                    <!-- Optional: Base line (visual aid) -->
+                    <!-- From bottom-left to bottom-right -->
+                    <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
+                    </svg>
+                    </div>
+                    `
+                    }
+                    else if(calculationType == "perimeter"){
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parallelogram tightly fit in viewBox -->
+                    <polygon points="0,100 50,0 200,0 150,100" 
+                    fill="none" 
+                    stroke="black" 
+                    stroke-width="2"/>
+                    
+                    <!-- Altitude from top-left corner -->
+                    
+                    
+                    <!-- Height label -->
+                    <text x="40" y="50" font-size="15" fill="blue">${Math.min(num1,num2)}cm</text>
+                    
+                    <!-- Base label -->
+                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1,num2)}cm</text>
+                    
+                    <!-- Optional: Base line (visual aid) -->
+                    <!-- From bottom-left to bottom-right -->
+                    <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
+                    </svg>
+                    </div>
+                    `
+
+                    }
+                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+            }
+        }
     }
-
+    
 });
 
 

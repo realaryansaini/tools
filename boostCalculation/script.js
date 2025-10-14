@@ -17,7 +17,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
             <div class="question-answer">
             <span class="question">
-            <span class="num">${num}</span> + <span class="answer">?</span> = 100 <button class="show_answer">Show</button>
+            <span class="num">${num}</span> + <span class="answer">_____</span> = 100 <button class="show_answer">Show</button>
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -26,7 +26,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
             <div class="question-answer">
             <span class="question">
-            <span class="num">${num}</span><sup>2</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
+            <span class="num">${num}</span><sup>2</sup> = <span class="answer">_____</span><button class="show_answer">Show</button>
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -35,7 +35,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
             <div class="question-answer">
             <span class="question">
-            <span class="num">${num * num}</span><sup>1/2</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
+            <span class="num">${num * num}</span><sup>1/2</sup> = <span class="answer">_____</span><button class="show_answer">Show</button>
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -44,7 +44,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
             <div class="question-answer">
             <span class="question">
-            <span class="num">${num}</span><sup>3</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
+            <span class="num">${num}</span><sup>3</sup> = <span class="answer">_____</span><button class="show_answer">Show</button>
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -53,7 +53,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
             <div class="question-answer">
             <span class="question">
-            <span class="num">${num * num * num}</span><sup>1/3</sup> = <span class="answer">?</span><button class="show_answer">Show</button>
+            <span class="num">${num * num * num}</span><sup>1/3</sup> = <span class="answer">_____</span><button class="show_answer">Show</button>
             </span>
             </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -93,7 +93,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
         <div class="question-answer">
         <span class="question">
-        <span class="num sumNum1">${sumNum1}</span>  + <span class="sumNum2">${sumNum2}</span> = <span class="answer">?</span> <button class="show_answer">Show</button>
+        <span class="num sumNum1">${sumNum1}</span>  + <span class="sumNum2">${sumNum2}</span> = <span class="answer">_____</span> <button class="show_answer">Show</button>
         </span>
         </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -134,7 +134,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
         <div class="question-answer">
         <span class="question">
-        <span class="num sumNum1">${Math.max(sumNum1, sumNum2)}</span>  - <span class="sumNum2">${Math.min(sumNum1, sumNum2)}</span> = <span class="answer">?</span> <button class="show_answer">Show</button>
+        <span class="num sumNum1">${Math.max(sumNum1, sumNum2)}</span>  - <span class="sumNum2">${Math.min(sumNum1, sumNum2)}</span> = <span class="answer">_____</span> <button class="show_answer">Show</button>
         </span>
         </div>`
             content.insertAdjacentHTML("beforeend", html)
@@ -175,7 +175,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             let html = `
         <div class="question-answer">
         <span class="question">
-        <span class="num sumNum1">${sumNum1}</span>  x <span class="sumNum2">${sumNum2}</span> = <span class="answer">?</span> <button class="show_answer">Show</button>
+        <span class="num sumNum1">${sumNum1}</span>  x <span class="sumNum2">${sumNum2}</span> = <span class="answer">_____</span> <button class="show_answer">Show</button>
         </span>
         </div>`
             content.insertAdjacentHTML("beforeend", html)
