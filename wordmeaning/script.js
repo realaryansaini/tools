@@ -9,9 +9,11 @@ async function pasteClipboard() {
 
 
 
-document.querySelector("input").addEventListener("click" , ()=>[
-    pasteClipboard()
-])
+document.querySelector("input").addEventListener("click" , ()=>{
+     if(document.querySelector("input#input").value == ""){
+        pasteClipboard()
+    }
+})
 
 
 

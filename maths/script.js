@@ -69,77 +69,77 @@ inputs.forEach((input) => {
         let optionsForSum = document.querySelector("form#optionsForSum")
         let formForTable = document.querySelector("form#formForTable")
         let formForFraction = document.querySelector("form#formForFraction")
-        
+
         if (input.value == "addition" || input.value == "substraction" || input.value == "multiply" || input.value == "divide") {
 
-            document.querySelectorAll('#optionsForSum > label:not(.onlyForShapes)').forEach((item)=>{
+            document.querySelectorAll('#optionsForSum > label:not(.onlyForShapes)').forEach((item) => {
                 item.style.display = "flex"
             })
 
             optionsForSum.style.display = "grid"
             formForTable.style.display = "none"
             formForFraction.style.display = "none"
-            if(input.value == "multiply" || input.value == "divide"){
+            if (input.value == "multiply" || input.value == "divide") {
                 // optionsForSum.style.display = "none"
                 optionsForSum.style.gridTemplateColumns = "repeat(7, auto);"
-                document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
+                document.querySelectorAll(".optionOnlyForDivide").forEach((item) => {
                     item.style.display = "flex"
                 })
-                document.querySelectorAll(".notForDivide").forEach((item)=>{
+                document.querySelectorAll(".notForDivide").forEach((item) => {
                     item.style.display = "none"
                 })
-            }else{
-                document.querySelectorAll(".notForDivide").forEach((item)=>{
+            } else {
+                document.querySelectorAll(".notForDivide").forEach((item) => {
                     item.style.display = "flex"
                 })
                 // formForDivide.style.gridTempleteColoums = "repeat(6 , auto);"
                 // optionsForSum.style.display = "grid"
                 // formForDivide.style.display = "none"
-                document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
+                document.querySelectorAll(".optionOnlyForDivide").forEach((item) => {
                     item.style.display = "none"
                 })
-                
+
             }
-            
-            
-            document.querySelectorAll("label.onlyForShapes").forEach((item)=>{
+
+
+            document.querySelectorAll("label.onlyForShapes").forEach((item) => {
                 item.style.display = "none"
             })
-            
-            
-            
+
+
+
         }
         else if (input.value == "table") {
             formForTable.style.display = "grid"
             optionsForSum.style.display = "none"
             formForFraction.style.display = "none"
             // formForDivide.style.display = "none"
-            document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
+            document.querySelectorAll(".optionOnlyForDivide").forEach((item) => {
                 item.style.display = "none"
             })
-            
-            
+
+
         }
         else if (input.value == "perimeter" || input.value == "area") {
             formForTable.style.display = "none"
             optionsForSum.style.display = "grid"
             formForFraction.style.display = "none"
             // formForDivide.style.display = "none"
-            
+
             // document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
             //         item.style.display = "none"
             //     })
-            document.querySelectorAll('#optionsForSum > label:not(.onlyForShapes)').forEach((item)=>{
+            document.querySelectorAll('#optionsForSum > label:not(.onlyForShapes)').forEach((item) => {
                 item.style.display = "none"
             })
-            document.querySelectorAll('form  > label.onlyForShapes').forEach((item)=>{
+            document.querySelectorAll('form  > label.onlyForShapes').forEach((item) => {
                 item.style.display = "flex"
             })
-            
-            
-            
+
+
+
         }
-        else if(input.value == "fraction"){
+        else if (input.value == "fraction") {
             formForTable.style.display = "none"
             optionsForSum.style.display = "none"
             formForFraction.style.display = "grid"
@@ -218,7 +218,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     // let input = document.querySelector("#input").value
     // console.log(document.querySelector('input[name="optionsForSum"]:checked'))
     let input = ""
-    if(document.querySelector('input[name="optionsForSum"]:checked') !== null){
+    if (document.querySelector('input[name="optionsForSum"]:checked') !== null) {
         input = document.querySelector('input[name="optionsForSum"]:checked').value;
     }
 
@@ -309,37 +309,37 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         document.querySelector(".content").insertAdjacentHTML("beforeend", html)
 
     }
-    if(calculationType == "perimeter" || calculationType == "area"){
-         if(input == "rec"){
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of rectangle</div>`)
-            for(let i = 1 ; i <= 12 ; i++){
+    if (calculationType == "perimeter" || calculationType == "area") {
+        if (input == "rec") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of rectangle</div>`)
+            for (let i = 1; i <= 12; i++) {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = `<div class="rectangle">
-                <div class="length-label">${Math.max(num1,num2)}cm</div>
-                <div class="width-label">${Math.min(num1,num2)}cm</div>
+                <div class="length-label">${Math.max(num1, num2)}cm</div>
+                <div class="width-label">${Math.min(num1, num2)}cm</div>
             </div>`
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
-         }
-         if(input == "sq"){
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of square</div>`)
-            for(let i = 1 ; i <= 12 ; i++){
+        }
+        if (input == "sq") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of square</div>`)
+            for (let i = 1; i <= 12; i++) {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 // let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = `<div class="rectangle square">
                 <div class="length-label">${num1}cm</div>
                 </div>`
-                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
-         if(input == "cir"){
-            if (calculationType == "perimeter"){
-                 calculationType = "circumference"
+        if (input == "cir") {
+            if (calculationType == "perimeter") {
+                calculationType = "circumference"
             }
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of circle</div>`)
-            
-            for(let i = 1 ; i <= 12 ; i++){
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of circle</div>`)
+
+            for (let i = 1; i <= 12; i++) {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 // let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = `<div class="circle"><svg  viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
@@ -352,19 +352,19 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </text>
                 </svg>
             </div>`
-                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
-        if(input == "tri"){
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType} of triangle</div>`)
-            
-            for(let i = 1 ; i <= 12 ; i++){
+        if (input == "tri") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of triangle</div>`)
+
+            for (let i = 1; i <= 12; i++) {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 let num2 = Math.floor(Math.random() * 90) + 10;
                 let num3 = Math.floor(Math.random() * 90) + 10;
                 let html = ""
                 // let num2 = Math.floor(Math.random() * 90) + 10;
-                if(calculationType == "perimeter"){
+                if (calculationType == "perimeter") {
 
                     html = ` <div class="triangle">
                     <svg width="100%" height="100%" viewBox="60 80 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -381,7 +381,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </svg>
                     
                     </div>`
-                }else if (calculationType == "area"){
+                } else if (calculationType == "area") {
                     html = ` <div class="triangle">
                     <svg width="100%" height="100%" viewBox="60 80 280 270" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -399,22 +399,22 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     
                     
                     </div>`
-                    
+
                 }
-                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
-            
+
         }
-        if(input == "pgram"){
-            
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the ${calculationType}</div>`)
+        if (input == "pgram") {
+
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType}</div>`)
             let html = ""
-            for(let i = 1;i<=12;i++){
+            for (let i = 1; i <= 12; i++) {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 let num2 = Math.floor(Math.random() * 90) + 10;
-                if(calculationType == "area"){
+                if (calculationType == "area") {
 
-                    
+
                     html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                     <polygon points="0,100 50,0 200,0 150,100" 
@@ -429,10 +429,10 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     stroke-dasharray="5 3"/>
                     
                     <!-- Height label -->
-                    <text x="55" y="50" font-size="15" fill="blue">${Math.min(num1,num2)}cm</text>
+                    <text x="55" y="50" font-size="15" fill="blue">${Math.min(num1, num2)}cm</text>
                     
                     <!-- Base label -->
-                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1,num2)}cm</text>
+                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1, num2)}cm</text>
                     
                     <!-- Optional: Base line (visual aid) -->
                     <!-- From bottom-left to bottom-right -->
@@ -440,9 +440,9 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </svg>
                     </div>
                     `
-                    }
-                    else if(calculationType == "perimeter"){
-                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                }
+                else if (calculationType == "perimeter") {
+                    html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                     <polygon points="0,100 50,0 200,0 150,100" 
                     fill="none" 
@@ -453,10 +453,10 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     
                     
                     <!-- Height label -->
-                    <text x="40" y="50" font-size="15" fill="blue">${Math.min(num1,num2)}cm</text>
+                    <text x="40" y="50" font-size="15" fill="blue">${Math.min(num1, num2)}cm</text>
                     
                     <!-- Base label -->
-                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1,num2)}cm</text>
+                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1, num2)}cm</text>
                     
                     <!-- Optional: Base line (visual aid) -->
                     <!-- From bottom-left to bottom-right -->
@@ -465,38 +465,38 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </div>
                     `
 
-                    }
-                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+                }
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
     }
-    if(calculationType == "fraction"){
+    if (calculationType == "fraction") {
         input = document.querySelector('input[name="optionsForFraction"]:checked').value;
-        if(input == "per"){
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the value of :</div>`)
-            for(let i = 1 ; i<=20;i++){
+        if (input == "per") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
+            for (let i = 1; i <= 20; i++) {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 let num2 = Math.floor(Math.random() * 900) + 100;
                 let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span> = ______</div>`
-                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
-        if(input == "per-s"){
-            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the value of :</div>`)
-            for(let i = 1 ; i<=20;i++){
+        if (input == "per-s") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
+            for (let i = 1; i <= 20; i++) {
                 let standrad_percentages = ["1", "2", "2.5", "3", "4", "5", "6.25", "7", "7.5", "8", "9", "10", "12.5", "15", "16.67", "17.5", "20", "25", "30", "33.33", "35", "40", "45", "50", "55", "60", "62.5", "66.67", "70", "75", "80", "85", "87.5", "90", "95", "100"]
                 let num1 = standrad_percentages[Math.floor(Math.random() * standrad_percentages.length - 1) + 1];
                 let num2 = Math.floor(Math.random() * 900) + 100;
                 let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span> = ______</div>`
-                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
 
         // console.log("you are in fraction");
-        
+
 
     }
-    
+
 });
 
 
@@ -540,7 +540,22 @@ document.querySelector("button.clear").addEventListener("click", () => {
 
 // document.querySelectorAll('input[name="calculationType]"').forEach((button) => {
 //     button.addEventListener("click", () => {
-        
+
 //     })
 // })
+
+
+const content = document.querySelector('#content');
+
+content.addEventListener('click', function () {
+    // Your function code here
+    //   console.log('Element was double-clicked');
+    content.classList.add("fullScreen")
+});
+
+content.addEventListener('dblclick', function () {
+    // Your function code here
+    console.log('Element was double-clicked');
+    content.classList.remove("fullScreen")
+});
 

@@ -9,9 +9,11 @@ async function pasteClipboard() {
 
 
 
-document.querySelector("input#input").addEventListener("click" , ()=>[
-    pasteClipboard()
-])
+document.querySelector("input#input").addEventListener("click" , ()=>{
+    if(document.querySelector("input#input").value == ""){
+        pasteClipboard()
+    }
+})
 
 // Generate initial question when page loads
 // addition_questions(1 ,100);
