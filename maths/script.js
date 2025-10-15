@@ -12,6 +12,7 @@ function addition_questions(num1, num2, Symbol) {
 
     // document.getElementById('num1').textContent = num1;
     // document.getElementById('num2').textContent = num2;
+
     let html = `<div class="question">
     <div class="math-symbol">${Symbol}</div>
                 <div class="math-question" id="num1">${num1}</div>
@@ -226,6 +227,8 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     // if (calculationType == "addition") {
 
     if (calculationType == "addition") {
+
+        content.insertAdjacentHTML("beforeend", `<div class="title">${calculationType}:</div>`)
         for (let i = 1; i <= 12; i++) {
             let Numbers = getNums(input)
             let num1 = Numbers[0]
@@ -234,6 +237,8 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         }
     }
     if (calculationType == "substraction") {
+        content.insertAdjacentHTML("beforeend", `<div class="title">${calculationType}:</div>`)
+        
         for (let i = 1; i <= 12; i++) {
             let Numbers = getNums(input)
             let num1 = Numbers[0]
@@ -242,6 +247,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         }
     }
     if (calculationType == "multiply") {
+        content.insertAdjacentHTML("beforeend", `<div class="title">${calculationType}:</div>`)
         for (let i = 1; i <= 12; i++) {
             let Numbers = getNums(input)
             let num1 = Numbers[0]
@@ -250,6 +256,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         }
     }
     if (calculationType == "divide") {
+        content.insertAdjacentHTML("beforeend", `<div class="title">${calculationType}:</div>`)
         for (let i = 1; i <= 12; i++) {
             let Numbers = getNums(input)
             let num1 = Numbers[0]
@@ -263,7 +270,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     }
     if (calculationType == "table") {
         let input = document.querySelector('input[name="optionsForTable"]:checked').value;
-        let html = `<div class="title">Table of ${input}</div>
+        let html = `<div class="title-table">Table of ${input}</div>
             <div class="multiplicationTable">
                 <div>
                     <span class="tableOf">${input}</span> x <span class="incrementNum">1</span> =
