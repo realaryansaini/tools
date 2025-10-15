@@ -1,6 +1,6 @@
 let tableForm = document.querySelector("form#formForTable")
 for (let i = 2; i < 20; i++) {
-    let html = `<input type="radio" id="${i}" name="optionsForSum" value="${i}">
+    let html = `<input type="radio" id="${i}" name="optionsForTable" value="${i}">
             <label for="${i}">${i}</label>`
     tableForm.insertAdjacentHTML("beforeend", html)
 }
@@ -68,6 +68,7 @@ inputs.forEach((input) => {
     input.addEventListener('click', () => {
         let optionsForSum = document.querySelector("form#optionsForSum")
         let formForTable = document.querySelector("form#formForTable")
+        let formForFraction = document.querySelector("form#formForFraction")
         
         if (input.value == "addition" || input.value == "substraction" || input.value == "multiply" || input.value == "divide") {
 
@@ -77,6 +78,7 @@ inputs.forEach((input) => {
 
             optionsForSum.style.display = "grid"
             formForTable.style.display = "none"
+            formForFraction.style.display = "none"
             if(input.value == "multiply" || input.value == "divide"){
                 // optionsForSum.style.display = "none"
                 optionsForSum.style.gridTemplateColumns = "repeat(7, auto);"
@@ -98,30 +100,32 @@ inputs.forEach((input) => {
                 })
                 
             }
-
-
+            
+            
             document.querySelectorAll("label.onlyForShapes").forEach((item)=>{
                 item.style.display = "none"
             })
-
+            
             
             
         }
         else if (input.value == "table") {
             formForTable.style.display = "grid"
             optionsForSum.style.display = "none"
+            formForFraction.style.display = "none"
             // formForDivide.style.display = "none"
             document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
-                    item.style.display = "none"
-                })
-                
+                item.style.display = "none"
+            })
+            
             
         }
         else if (input.value == "perimeter" || input.value == "area") {
             formForTable.style.display = "none"
             optionsForSum.style.display = "grid"
+            formForFraction.style.display = "none"
             // formForDivide.style.display = "none"
-
+            
             // document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
             //         item.style.display = "none"
             //     })
@@ -131,9 +135,14 @@ inputs.forEach((input) => {
             document.querySelectorAll('form  > label.onlyForShapes').forEach((item)=>{
                 item.style.display = "flex"
             })
-
-          
             
+            
+            
+        }
+        else if(input.value == "fraction"){
+            formForTable.style.display = "none"
+            optionsForSum.style.display = "none"
+            formForFraction.style.display = "grid"
         }
 
     })
@@ -207,7 +216,12 @@ function getNums(input) {
 // Refresh button event listener
 document.getElementById('refreshBtn').addEventListener('click', () => {
     // let input = document.querySelector("#input").value
-    let input = document.querySelector('input[name="optionsForSum"]:checked').value;
+    // console.log(document.querySelector('input[name="optionsForSum"]:checked'))
+    let input = ""
+    if(document.querySelector('input[name="optionsForSum"]:checked') !== null){
+        input = document.querySelector('input[name="optionsForSum"]:checked').value;
+    }
+
     let calculationType = document.querySelector("input[name='calculationType']:checked").value
     // if (calculationType == "addition") {
 
@@ -248,6 +262,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         }
     }
     if (calculationType == "table") {
+        let input = document.querySelector('input[name="optionsForTable"]:checked').value;
         let html = `<div class="title">Table of ${input}</div>
             <div class="multiplicationTable">
                 <div>
@@ -327,7 +342,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             for(let i = 1 ; i <= 12 ; i++){
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 // let num2 = Math.floor(Math.random() * 90) + 10;
-                let html = `<div class="circle"><svg width="auto" height="auto" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                let html = `<div class="circle"><svg  viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="110" cy="110" r="100" stroke="black" stroke-width="4" fill="white" />
 
                     <line x1="110" y1="110" x2="110" y2="10" stroke="black" stroke-width="2" />
@@ -455,6 +470,32 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             }
         }
     }
+    if(calculationType == "fraction"){
+        input = document.querySelector('input[name="optionsForFraction"]:checked').value;
+        if(input == "per"){
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the value of :</div>`)
+            for(let i = 1 ; i<=20;i++){
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                let num2 = Math.floor(Math.random() * 900) + 100;
+                let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span> = ______</div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+            }
+        }
+        if(input == "per-s"){
+            document.querySelector("#content").insertAdjacentHTML("beforeend" , `<div class='title'>Find the value of :</div>`)
+            for(let i = 1 ; i<=20;i++){
+                let standrad_percentages = ["1", "2", "2.5", "3", "4", "5", "6.25", "7", "7.5", "8", "9", "10", "12.5", "15", "16.67", "17.5", "20", "25", "30", "33.33", "35", "40", "45", "50", "55", "60", "62.5", "66.67", "70", "75", "80", "85", "87.5", "90", "95", "100"]
+                let num1 = standrad_percentages[Math.floor(Math.random() * standrad_percentages.length - 1) + 1];
+                let num2 = Math.floor(Math.random() * 900) + 100;
+                let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span> = ______</div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend" , html)
+            }
+        }
+
+        // console.log("you are in fraction");
+        
+
+    }
     
 });
 
@@ -488,9 +529,11 @@ document.getElementById('downloadBtn').addEventListener('click', function () {
 document.querySelector("button.clear").addEventListener("click", () => {
     let content = document.querySelector(".content")
     let formForTable = document.querySelector("form#formForTable")
+    let formForFraction = document.querySelector("form#formForFraction")
     let optionsForSum = document.querySelector("form#optionsForSum")
     formForTable.style.display = "none"
     optionsForSum.style.display = "none"
+    formForFraction.style.display = "none"
     content.innerHTML = ""
 
 })

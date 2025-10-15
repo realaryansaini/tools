@@ -199,7 +199,7 @@ form {
 }
 
 form#formForTable,
-form#optionsForSum {
+form#optionsForSum ,form#formForFraction {
     display: none;
 }
 
@@ -231,7 +231,7 @@ input[type="radio"]:checked+label {
 }
 
 
-form#optionsForSum {
+form#optionsForSum , form#formForFraction {
     grid-template-columns: repeat(6, auto);
 }
 
@@ -264,6 +264,12 @@ div.content:has(>div.rectangle) , div.content:has(>div.triangle)  , div.content:
     grid-template-columns: auto auto;
     padding-top: 50px;
     /* flex-direction: column; */
+}
+
+div.content:has(>div.percentage){
+    display: grid;
+    grid-template-columns: auto;
+    padding-top: 50px;
 }
 
 
@@ -496,4 +502,16 @@ div.content:has(>div.rectangle) , div.content:has(>div.triangle)  , div.content:
 }
 .parellelogram svg{
     padding: 5px;
+}
+
+.percentage{
+    counter-increment: percentage;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.percentage::before {
+    content: counter(percentage) ". ";
+    color: rgba(187, 6, 6, 0.815);
+    /* Display the counter before each question */
 }
