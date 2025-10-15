@@ -37,6 +37,7 @@ html {
     /* gap: 15px; */
     column-gap: 15px;
     margin-top: 5px;
+     counter-reset: item
 }
 
 .question {
@@ -510,8 +511,18 @@ div.content:has(>div.percentage){
     margin-bottom: 10px;
 }
 
-.percentage::before {
+/* .percentage::before {
     content: counter(percentage) ". ";
     color: rgba(187, 6, 6, 0.815);
-    /* Display the counter before each question */
+} */
+
+.content .percentage::before {
+    counter-increment: item; /* Increase counter for each element */
+    content: counter(item) ". "; /* Display the number followed by a period */
+    color: rgba(187, 6, 6, 0.815);
+}
+.content .divide::before {
+    counter-increment: item; /* Increase counter for each element */
+    content: counter(item) ". "; /* Display the number followed by a period */
+    color: rgba(187, 6, 6, 0.815);
 }
