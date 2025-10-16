@@ -25,44 +25,15 @@ function addition_questions(num1, num2, Symbol) {
     content.insertAdjacentHTML("beforeend", html)
 }
 
-function substraction_questions(starting, ending) {
-    // const num1 = Math.floor(Math.random() * ending) + starting; 
-    // const num2 = Math.floor(Math.random() * ending) + starting; 
-
-    // document.getElementById('num1').textContent = num1;
-    // document.getElementById('num2').textContent = num2;
-    let html = `<div class="question">
-    <div class="math-symbol">-</div>
-                <div class="math-question" id="num1">${Math.max(num1, num2)}</div>
-                <div class="math-question" id="num2">${Math.min(num1, num2)}</div>
-                
-                <div class="underline"></div>
-                <div class="underline2"></div>
-            </div>`
+function addTagsToContent(num1, num2, Symbol) {
+    let html = `<div class="percentage"><span class="beforeOf">${num1}</span> ${Symbol} <span class="afterOf">${num2}</span></div>`
     let content = document.querySelector(".content")
     content.insertAdjacentHTML("beforeend", html)
 }
 
-function multiply_questions() {
-    const num1 = Math.floor(Math.random() * 900) + 100; // Random number between 1-100
-    const num2 = Math.floor(Math.random() * 90) + 10; // Random number between 1-100
 
-    // document.getElementById('num1').textContent = num1;
-    // document.getElementById('num2').textContent = num2;
-    let html = `<div class="question">
-    <div class="math-symbol">x</div>
-                <div class="math-question" id="num1">${Math.max(num1, num2)}</div>
-                <div class="math-question" id="num2">${Math.min(num1, num2)}</div>
-                
-                <div class="underline"></div>
-                <div class="underline2"></div>
-            </div>`
-    let content = document.querySelector(".content")
-    content.insertAdjacentHTML("beforeend", html)
-}
 
-// Generate initial question when page loads
-// addition_questions(1 ,100);
+
 
 let inputs = document.querySelectorAll("input[name='calculationType']")
 inputs.forEach((input) => {
@@ -70,6 +41,9 @@ inputs.forEach((input) => {
         let optionsForSum = document.querySelector("form#optionsForSum")
         let formForTable = document.querySelector("form#formForTable")
         let formForFraction = document.querySelector("form#formForFraction")
+        let formForDecimal = document.querySelector("form#formForDecimal")
+        let calculationOptionsForDecimal = document.querySelector("form#calculationOptionsForDecimal")
+
 
         if (input.value == "addition" || input.value == "substraction" || input.value == "multiply" || input.value == "divide") {
 
@@ -80,6 +54,8 @@ inputs.forEach((input) => {
             optionsForSum.style.display = "grid"
             formForTable.style.display = "none"
             formForFraction.style.display = "none"
+            formForDecimal.style.display = "none"
+            calculationOptionsForDecimal.style.display = "none"
             if (input.value == "multiply" || input.value == "divide") {
                 // optionsForSum.style.display = "none"
                 optionsForSum.style.gridTemplateColumns = "repeat(7, auto);"
@@ -108,25 +84,29 @@ inputs.forEach((input) => {
             })
 
 
-
+            
         }
         else if (input.value == "table") {
             formForTable.style.display = "grid"
             optionsForSum.style.display = "none"
             formForFraction.style.display = "none"
+            formForDecimal.style.display = "none"
+            calculationOptionsForDecimal.style.display = "none"
             // formForDivide.style.display = "none"
             document.querySelectorAll(".optionOnlyForDivide").forEach((item) => {
                 item.style.display = "none"
             })
-
+            
 
         }
         else if (input.value == "perimeter" || input.value == "area") {
             formForTable.style.display = "none"
             optionsForSum.style.display = "grid"
             formForFraction.style.display = "none"
+            formForDecimal.style.display = "none"
+            calculationOptionsForDecimal.style.display = "none"
             // formForDivide.style.display = "none"
-
+            
             // document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
             //         item.style.display = "none"
             //     })
@@ -136,16 +116,33 @@ inputs.forEach((input) => {
             document.querySelectorAll('form  > label.onlyForShapes').forEach((item) => {
                 item.style.display = "flex"
             })
+            
 
-
-
+            
         }
         else if (input.value == "fraction") {
             formForTable.style.display = "none"
             optionsForSum.style.display = "none"
             formForFraction.style.display = "grid"
+            formForDecimal.style.display = "none"
+            calculationOptionsForDecimal.style.display = "none"
+        } else if (input.value == "decimal") {
+            formForTable.style.display = "none"
+            optionsForSum.style.display = "none"
+            formForFraction.style.display = "none"
+            formForDecimal.style.display = "grid"
+            // calculationOptionsForDecimal.style.display = "grid"
+            
+            
         }
 
+    })
+})
+
+
+document.querySelectorAll("form#formForDecimal input").forEach((input)=>{
+    input.addEventListener("click",()=>{
+        document.querySelector("form#calculationOptionsForDecimal").style.display = "grid"
     })
 })
 
@@ -214,6 +211,14 @@ function getNums(input) {
     }
     return [num1, num2]
 }
+
+
+function insertRandomDot(numberStr) {
+    const positions = Array.from({ length: numberStr.length - 1 }, (_, i) => i + 1);
+    const randomPos = positions[Math.floor(Math.random() * positions.length)];
+    return numberStr.slice(0, randomPos) + "." + numberStr.slice(randomPos);
+}
+
 // Refresh button event listener
 document.getElementById('refreshBtn').addEventListener('click', () => {
     // let input = document.querySelector("#input").value
@@ -498,15 +503,15 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             if (input == "pgram") {
                 title = "parallelog.."
             }
-            else if(input == "pgram-h" && calculationType == "perimeter"){
+            else if (input == "pgram-h" && calculationType == "perimeter") {
                 title = "parallelog.."
                 ctype = "other side"
             }
-            else if(input == "pgram-h" && calculationType == "area"){
+            else if (input == "pgram-h" && calculationType == "area") {
                 title = "parallelog.."
                 ctype = "height"
             }
-             else if (input == "rhombus-s") {
+            else if (input == "rhombus-s") {
                 ctype = "Side"
                 title = "rhombus"
             }
@@ -550,7 +555,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     if (input == "pgram-h") {
                         num1 = Math.floor(Math.random() * 900) + 100;
                         console.log("i am in pgram h");
-                        
+
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                 <polygon points="0,100 50,0 200,0 150,100" 
@@ -631,7 +636,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     }
                     if (input == "pgram-h") {
                         num1 = Math.floor(Math.random() * 900) + 100;
-                        
+
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                 <polygon points="0,100 50,0 200,0 150,100" 
@@ -740,16 +745,31 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
 
 
     }
-    if(calculationType == "dec"){
-        if (input == "2-1") {
-            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
-            for (let i = 1; i <= 20; i++) {
-                let Numbers = getNums(input)
-                let num1 = Numbers[0]
-                let num2 = Numbers[1]
-                let html = `<div class="percentage"><span class="beforeOf">${num1}</span> + <span class="afterOf">${num2}</span> = ______</div>`
-                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
-            }
+    if (calculationType == "decimal") {
+        let calculationTypeForDecimal = document.querySelector("input[name='optionsForDecimal']:checked").value
+
+        document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
+        let symbol = ""
+        if (calculationTypeForDecimal == "sum") {
+            symbol = "+"
+        }
+        if (calculationTypeForDecimal == "subtraction") {
+            symbol = "-"
+        }
+        if (calculationTypeForDecimal == "multiply") {
+            symbol = "x"
+        }
+        if (calculationTypeForDecimal == "divide") {
+            symbol = "÷"
+        }
+
+        // if
+        let current_input = document.querySelector("form#calculationOptionsForDecimal input[name='calculationOptionsForDecimal']:checked").value
+        for (let i = 1; i <= 20; i++) {
+            let Numbers = getNums(current_input)
+            let num1 = insertRandomDot(String(Numbers[0]))
+            let num2 = insertRandomDot(String(Numbers[1]))
+            addTagsToContent(num1, num2, symbol)
         }
     }
 
@@ -786,10 +806,14 @@ document.querySelector("button.clear").addEventListener("click", () => {
     let content = document.querySelector(".content")
     let formForTable = document.querySelector("form#formForTable")
     let formForFraction = document.querySelector("form#formForFraction")
+    let formForDecimal = document.querySelector("form#formForDecimal")
     let optionsForSum = document.querySelector("form#optionsForSum")
+    let calculationOptionsForDecimal = document.querySelector("form#calculationOptionsForDecimal")
     formForTable.style.display = "none"
     optionsForSum.style.display = "none"
     formForFraction.style.display = "none"
+    formForDecimal.style.display = "none"
+    calculationOptionsForDecimal.style.display = "none"
     content.innerHTML = ""
 
 })
