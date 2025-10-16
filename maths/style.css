@@ -31,7 +31,7 @@ html {
     position: relative;
     width: min(700px, 100%);
     background-color: #f5f5f5;
-    padding: 60px 20px 0 20px;
+    padding: 60px 15px 0 15px;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -411,6 +411,7 @@ div.content:has(>div.percentage) {
 
 
 .rectangle {
+    position: relative;
     /* height: calc(100vh/5);    */
     aspect-ratio: 2/1;
     background-color: lightblue;
@@ -425,6 +426,20 @@ div.content:has(>div.percentage) {
 }
 
 /* Length label: top center (inside) */
+.length-label-area {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .8rem;
+    min-width: 125px;
+}
+
 .length-label {
     position: absolute;
     top: 5px;
@@ -436,6 +451,7 @@ div.content:has(>div.percentage) {
     padding: 2px 6px;
     border-radius: 4px;
     font-size: .8rem;
+    /* min-width: 125px; */
 }
 
 /* Width label: left center (inside), rotated */
@@ -556,3 +572,4 @@ div.content:has(>div.percentage) {
     /* Display the number followed by a period */
     color: rgba(187, 6, 6, 0.815);
 }
+

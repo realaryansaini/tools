@@ -154,7 +154,7 @@ function getNums(input) {
     let num2 = 0
     if (input == "2-1" || input == "1-2") {
         num1 = Math.floor(Math.random() * 90) + 10;
-        num2 = Math.floor(Math.random() * 9) + 1;
+        num2 = Math.floor(Math.random() * 8) + 2;
     }
     else if (input == "2-2") {
         num1 = Math.floor(Math.random() * 90) + 10;
@@ -162,7 +162,7 @@ function getNums(input) {
     }
     else if (input == "3-1") {
         num1 = Math.floor(Math.random() * 900) + 100;
-        num2 = Math.floor(Math.random() * 9) + 1;
+        num2 = Math.floor(Math.random() * 8) + 2;
     }
     else if (input == "10-20-3") {
         num1 = Math.floor(Math.random() * 11) + 10;
@@ -238,7 +238,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     }
     if (calculationType == "substraction") {
         content.insertAdjacentHTML("beforeend", `<div class="title">${calculationType}:</div>`)
-        
+
         for (let i = 1; i <= 12; i++) {
             let Numbers = getNums(input)
             let num1 = Numbers[0]
@@ -320,11 +320,13 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         if (input == "rec") {
             document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of rectangle</div>`)
             for (let i = 1; i <= 12; i++) {
-                let num1 = Math.floor(Math.random() * 90) + 10;
-                let num2 = Math.floor(Math.random() * 90) + 10;
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
+                let num1 = Math.floor(Math.random() * 990) + 10;
+                let num2 = Math.floor(Math.random() * 990) + 10;
                 let html = `<div class="rectangle">
-                <div class="length-label">${Math.max(num1, num2)}cm</div>
-                <div class="width-label">${Math.min(num1, num2)}cm</div>
+                <div class="length-label">${Math.max(num1, num2)}${unit}</div>
+                <div class="width-label">${Math.min(num1, num2)}${unit}</div>
             </div>`
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
@@ -332,11 +334,35 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         if (input == "sq") {
             document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of square</div>`)
             for (let i = 1; i <= 12; i++) {
-                let num1 = Math.floor(Math.random() * 90) + 10;
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
+                let num1 = Math.floor(Math.random() * 990) + 10;
                 // let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = `<div class="rectangle square">
-                <div class="length-label">${num1}cm</div>
+                <div class="length-label">${num1}${unit}</div>
                 </div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
+            }
+        }
+        if (input == "sq-s") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the side of square</div>`)
+            let html = ""
+            for (let i = 1; i <= 12; i++) {
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
+                let num1 = Math.floor(Math.random() * 9900) + 100;
+                // let num2 = Math.floor(Math.random() * 90) + 10;
+                if (calculationType == "area") {
+
+                    html = `<div class="rectangle square">
+                    <div class="length-label-area">Area = ${num1}${unit} <sup>2</sup></div>
+                    </div>`
+                } else {
+                    html = `<div class="rectangle square">
+                    <div class="length-label-area">Perimeter = ${num1}${unit}</div>
+                    </div>`
+
+                }
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
@@ -347,6 +373,8 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of circle</div>`)
 
             for (let i = 1; i <= 12; i++) {
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 // let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = `<div class="circle"><svg  viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
@@ -355,10 +383,38 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     <line x1="110" y1="110" x2="110" y2="10" stroke="black" stroke-width="2" />
 
                     <text x="140" y="70" text-anchor="middle" font-size="18" fill="black" font-weight="bold">
-                        ${num1}cm
+                        ${num1}${unit}
                     </text>
                 </svg>
             </div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
+            }
+        }
+        if (input == "cir-r") {
+            if (calculationType == "perimeter") {
+                calculationType = "circumference"
+            }
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the radius of circle</div>`)
+
+            let html = ""
+            for (let i = 1; i <= 12; i++) {
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
+                let num1 = Math.floor(Math.random() * 9900) + 100;
+                if (calculationType == "area") {
+                    // let num2 = Math.floor(Math.random() * 90) + 10;
+                    html = `<div class="circle"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"> <circle cx="110" cy="110" r="100" stroke="black" stroke-width="4" fill="white" /> <text x="110" y="100" text-anchor="middle" font-size="18" fill="black" font-weight="bold"> Area = ${num1}${unit} <tspan dy="-6" font-size="12">2</tspan> </text> 
+                    <text x="110" y="130" text-anchor="middle" font-size="18" fill="black" font-weight="bold"> r = ? </text> </svg>
+                    </div>`
+                }
+                else {
+                    console.log("i am in perimeter");
+
+                    html = `<div class="circle"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"> <circle cx="110" cy="110" r="100" stroke="black" stroke-width="4" fill="white" /> <text x="110" y="100" text-anchor="middle" font-size="18" fill="black" font-weight="bold"> Circumf = ${num1}${unit}</text> 
+                    <text x="110" y="130" text-anchor="middle" font-size="18" fill="black" font-weight="bold"> r = ? </text> </svg>
+                    </div>`
+
+                }
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
@@ -371,8 +427,9 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 let num3 = Math.floor(Math.random() * 90) + 10;
                 let html = ""
                 // let num2 = Math.floor(Math.random() * 90) + 10;
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
                 if (calculationType == "perimeter") {
-
                     html = ` <div class="triangle">
                     <svg width="100%" height="100%" viewBox="60 80 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -380,11 +437,11 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round"
                     stroke-linejoin="round" />
                     <!-- Side labels (approximate, manually placed) -->
-                    <text x="180" y="300" font-size="14" fill="blue" font-weight="bold">${num1}cm</text>
+                    <text x="180" y="300" font-size="14" fill="blue" font-weight="bold">${num1}${unit}</text>
                     <text x="230" y="190" font-size="14" fill="blue" font-weight="bold"
-                    transform="rotate(-28 270,250)">${num2}cm</text>
+                    transform="rotate(-28 270,250)">${num2}${unit}</text>
                     <text x="150" y="190" font-size="14" fill="blue" font-weight="bold"
-                    transform="rotate(38 120,180)">${num3}cm</text>
+                    transform="rotate(38 120,180)">${num3}${unit}</text>
                     </svg>
                     
                     </div>`
@@ -400,8 +457,8 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     <line x1="200" y1="85" x2="200" y2="313.5" stroke="black" stroke-width="4" stroke-dasharray="6 4"/>
                     
                     <!-- Side labels (approximate, manually placed) -->
-                    <text x="210" y="250" font-size="20" fill="blue" font-weight="bold">${num2}cm</text>
-                    <text x="180" y="340" font-size="20" fill="blue" font-weight="bold">${num1}cm</text>
+                    <text x="210" y="250" font-size="20" fill="blue" font-weight="bold">${num2}${unit}</text>
+                    <text x="180" y="340" font-size="20" fill="blue" font-weight="bold">${num1}${unit}</text>
                     </svg>
                     
                     
@@ -412,16 +469,20 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             }
 
         }
-        if (input == "pgram") {
+        if (input == "pgram" || input == "rhombus") {
+            let title = input
+            if (input == "pgram"){
+               title = "parallelog.."
+            }
 
-            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType}</div>`)
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of ${title}</div>`)
             let html = ""
             for (let i = 1; i <= 12; i++) {
-                let num1 = Math.floor(Math.random() * 90) + 10;
-                let num2 = Math.floor(Math.random() * 90) + 10;
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
+                let num1 = Math.floor(Math.random() * 990) + 10;
+                let num2 = Math.floor(Math.random() * 990) + 10;
                 if (calculationType == "area") {
-
-
                     html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                     <polygon points="0,100 50,0 200,0 150,100" 
@@ -436,10 +497,10 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     stroke-dasharray="5 3"/>
                     
                     <!-- Height label -->
-                    <text x="55" y="50" font-size="15" fill="blue">${Math.min(num1, num2)}cm</text>
+                    <text x="55" y="50" font-size="15" fill="blue">${Math.min(num1, num2)}${unit}</text>
                     
                     <!-- Base label -->
-                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1, num2)}cm</text>
+                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1, num2)}${unit}</text>
                     
                     <!-- Optional: Base line (visual aid) -->
                     <!-- From bottom-left to bottom-right -->
@@ -449,8 +510,9 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     `
                 }
                 else if (calculationType == "perimeter") {
-                    html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Parallelogram tightly fit in viewBox -->
+                    if(input == "pgram"){
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Parallelogram tightly fit in viewBox -->
                     <polygon points="0,100 50,0 200,0 150,100" 
                     fill="none" 
                     stroke="black" 
@@ -460,10 +522,10 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     
                     
                     <!-- Height label -->
-                    <text x="40" y="50" font-size="15" fill="blue">${Math.min(num1, num2)}cm</text>
+                    <text x="40" y="50" font-size="15" fill="blue">${Math.min(num1, num2)}${unit}</text>
                     
                     <!-- Base label -->
-                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1, num2)}cm</text>
+                    <text x="70" y="95" font-size="15" fill="green">${Math.max(num1, num2)}${unit}</text>
                     
                     <!-- Optional: Base line (visual aid) -->
                     <!-- From bottom-left to bottom-right -->
@@ -471,6 +533,31 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </svg>
                     </div>
                     `
+                }else{
+                    html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parallelogram tightly fit in viewBox -->
+                <polygon points="0,100 50,0 200,0 150,100" 
+                fill="none" 
+                stroke="black" 
+                stroke-width="2"/>
+                
+                <!-- Altitude from top-left corner -->
+                
+                
+                <!-- Height label -->
+                
+                
+                <!-- Base label -->
+                <text x="70" y="95" font-size="15" fill="green">${num1}${unit}</text>
+                
+                <!-- Optional: Base line (visual aid) -->
+                <!-- From bottom-left to bottom-right -->
+                <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
+                </svg>
+                </div>
+                `
+
+                }
 
                 }
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
