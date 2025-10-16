@@ -322,12 +322,35 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             for (let i = 1; i <= 12; i++) {
                 let units = ["cm", "m"]
                 let unit = units[Math.floor(Math.random() * 2) + 0]
-                let num1 = Math.floor(Math.random() * 990) + 10;
-                let num2 = Math.floor(Math.random() * 990) + 10;
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = `<div class="rectangle">
                 <div class="length-label">${Math.max(num1, num2)}${unit}</div>
                 <div class="width-label">${Math.min(num1, num2)}${unit}</div>
             </div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
+            }
+        }
+        if (input == "rec-l") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the Length of rectangle</div>`)
+            for (let i = 1; i <= 12; i++) {
+                let units = ["cm", "m"]
+                let unit = units[Math.floor(Math.random() * 2) + 0]
+                let num1 = Math.floor(Math.random() * 990) + 10;
+                let num2 = Math.floor(Math.random() * 90) + 10;
+                let html = ""
+                if (calculationType == "area") {
+                    html = `<div class="rectangle">
+                    <div class="length-label-area">Area = ${num1}${unit}<sup>2</sup></div>
+                    <div class="length-label">B = ${num2}${unit}</div>
+                </div>`
+                }
+                if (calculationType == "perimeter") {
+                    html = `<div class="rectangle">
+                    <div class="length-label-area">Perimeter = ${num1}${unit}</div>
+                    <div class="length-label">B = ${num2}${unit}</div>
+                </div>`
+                }
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
@@ -469,12 +492,21 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             }
 
         }
-        if (input == "pgram" || input == "rhombus" || input == "rhombus-s") {
+        if (input == "pgram" || input == "rhombus" || input == "rhombus-s" || input == "pgram-h") {
             let title = input
             let ctype = calculationType
             if (input == "pgram") {
                 title = "parallelog.."
-            }else if (input =="rhombus-s"){
+            }
+            else if(input == "pgram-h" && calculationType == "perimeter"){
+                title = "parallelog.."
+                ctype = "other side"
+            }
+            else if(input == "pgram-h" && calculationType == "area"){
+                title = "parallelog.."
+                ctype = "height"
+            }
+             else if (input == "rhombus-s") {
                 ctype = "Side"
                 title = "rhombus"
             }
@@ -484,10 +516,10 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             for (let i = 1; i <= 12; i++) {
                 let units = ["cm", "m"]
                 let unit = units[Math.floor(Math.random() * 2) + 0]
-                let num1 = Math.floor(Math.random() * 990) + 10;
-                let num2 = Math.floor(Math.random() * 990) + 10;
+                let num1 = Math.floor(Math.random() * 90) + 10;
+                let num2 = Math.floor(Math.random() * 90) + 10;
                 if (calculationType == "area") {
-                    if(input == "pgram" || input == "rhombus"){
+                    if (input == "pgram" || input == "rhombus") {
 
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                         <!-- Parallelogram tightly fit in viewBox -->
@@ -514,8 +546,38 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </svg>
                     </div>
                     `
-                    }if (input == "rhombus-s"){
-                         num1 = Math.floor(Math.random() * 9900) + 100;
+                    }
+                    if (input == "pgram-h") {
+                        num1 = Math.floor(Math.random() * 900) + 100;
+                        console.log("i am in pgram h");
+                        
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parallelogram tightly fit in viewBox -->
+                <polygon points="0,100 50,0 200,0 150,100" 
+                fill="none" 
+                stroke="black" 
+                stroke-width="2"/>
+                
+                <!-- Altitude from top-left corner -->
+                
+                
+                <!-- Height label -->
+                
+                
+                <!-- Base label -->
+                <text x="40" y="50" font-size="15" fill="black">Area = ${num1}${unit}<tspan dy="-6" font-size="12">2</tspan></text>
+                </text> 
+                    <text x="90" y="70" text-anchor="middle" font-size="12" fill="black"> Base = ${num2}${unit} </text>
+                
+                <!-- Optional: Base line (visual aid) -->
+                <!-- From bottom-left to bottom-right -->
+                <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
+                </svg>
+                </div>
+                `
+                    }
+                    if (input == "rhombus-s") {
+                        num1 = Math.floor(Math.random() * 9900) + 100;
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                 <polygon points="0,100 50,0 200,0 150,100" 
@@ -567,6 +629,34 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </div>
                     `
                     }
+                    if (input == "pgram-h") {
+                        num1 = Math.floor(Math.random() * 900) + 100;
+                        
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parallelogram tightly fit in viewBox -->
+                <polygon points="0,100 50,0 200,0 150,100" 
+                fill="none" 
+                stroke="black" 
+                stroke-width="2"/>
+                
+                <!-- Altitude from top-left corner -->
+                
+                
+                <!-- Height label -->
+                
+                
+                <!-- Base label -->
+                <text x="40" y="50" font-size="15" fill="black">Perimeter = ${num1}${unit}</text>
+                </text> 
+                    <text x="90" y="70" text-anchor="middle" font-size="12" fill="black"> Base = ${num2}${unit} </text>
+                
+                <!-- Optional: Base line (visual aid) -->
+                <!-- From bottom-left to bottom-right -->
+                <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
+                </svg>
+                </div>
+                `
+                    }
                     if (input == "rhombus") {
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
@@ -593,7 +683,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 `
                     }
                     if (input == "rhombus-s") {
-                         num1 = Math.floor(Math.random() * 9900) + 100;
+                        num1 = Math.floor(Math.random() * 9900) + 100;
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                 <polygon points="0,100 50,0 200,0 150,100" 
@@ -649,6 +739,18 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
         // console.log("you are in fraction");
 
 
+    }
+    if(calculationType == "dec"){
+        if (input == "2-1") {
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
+            for (let i = 1; i <= 20; i++) {
+                let Numbers = getNums(input)
+                let num1 = Numbers[0]
+                let num2 = Numbers[1]
+                let html = `<div class="percentage"><span class="beforeOf">${num1}</span> + <span class="afterOf">${num2}</span> = ______</div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
+            }
+        }
     }
 
 });
