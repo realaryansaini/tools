@@ -469,13 +469,17 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             }
 
         }
-        if (input == "pgram" || input == "rhombus") {
+        if (input == "pgram" || input == "rhombus" || input == "rhombus-s") {
             let title = input
-            if (input == "pgram"){
-               title = "parallelog.."
+            let ctype = calculationType
+            if (input == "pgram") {
+                title = "parallelog.."
+            }else if (input =="rhombus-s"){
+                ctype = "Side"
+                title = "rhombus"
             }
 
-            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${calculationType} of ${title}</div>`)
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the ${ctype} of ${title}</div>`)
             let html = ""
             for (let i = 1; i <= 12; i++) {
                 let units = ["cm", "m"]
@@ -483,8 +487,10 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 let num1 = Math.floor(Math.random() * 990) + 10;
                 let num2 = Math.floor(Math.random() * 990) + 10;
                 if (calculationType == "area") {
-                    html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Parallelogram tightly fit in viewBox -->
+                    if(input == "pgram" || input == "rhombus"){
+
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Parallelogram tightly fit in viewBox -->
                     <polygon points="0,100 50,0 200,0 150,100" 
                     fill="none" 
                     stroke="black" 
@@ -508,9 +514,36 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </svg>
                     </div>
                     `
+                    }if (input == "rhombus-s"){
+                         num1 = Math.floor(Math.random() * 9900) + 100;
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parallelogram tightly fit in viewBox -->
+                <polygon points="0,100 50,0 200,0 150,100" 
+                fill="none" 
+                stroke="black" 
+                stroke-width="2"/>
+                
+                <!-- Altitude from top-left corner -->
+                
+                
+                <!-- Height label -->
+                
+                
+                <!-- Base label -->
+                <text x="40" y="50" font-size="15" fill="black">Area = ${num1}${unit}<tspan dy="-6" font-size="12">2</tspan></text>
+                </text> 
+                    <text x="90" y="70" text-anchor="middle" font-size="18" fill="black"> s = ? </text>
+                
+                <!-- Optional: Base line (visual aid) -->
+                <!-- From bottom-left to bottom-right -->
+                <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
+                </svg>
+                </div>
+                `
+                    }
                 }
                 else if (calculationType == "perimeter") {
-                    if(input == "pgram"){
+                    if (input == "pgram") {
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                         <!-- Parallelogram tightly fit in viewBox -->
                     <polygon points="0,100 50,0 200,0 150,100" 
@@ -533,8 +566,9 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     </svg>
                     </div>
                     `
-                }else{
-                    html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    }
+                    if (input == "rhombus") {
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                 <polygon points="0,100 50,0 200,0 150,100" 
                 fill="none" 
@@ -550,14 +584,40 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 <!-- Base label -->
                 <text x="70" y="95" font-size="15" fill="green">${num1}${unit}</text>
                 
+                
                 <!-- Optional: Base line (visual aid) -->
                 <!-- From bottom-left to bottom-right -->
                 <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
                 </svg>
                 </div>
                 `
-
-                }
+                    }
+                    if (input == "rhombus-s") {
+                         num1 = Math.floor(Math.random() * 9900) + 100;
+                        html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parallelogram tightly fit in viewBox -->
+                <polygon points="0,100 50,0 200,0 150,100" 
+                fill="none" 
+                stroke="black" 
+                stroke-width="2"/>
+                
+                <!-- Altitude from top-left corner -->
+                
+                
+                <!-- Height label -->
+                
+                
+                <!-- Base label -->
+                <text x="32" y="60" font-size="15" fill="black">Perimeter = ${num1}${unit}</text>
+                <text x="90" y="80" text-anchor="middle" font-size="18" fill="black"> s = ? </text>
+                
+                <!-- Optional: Base line (visual aid) -->
+                <!-- From bottom-left to bottom-right -->
+                <!-- <line x1="0" y1="100" x2="150" y2="100" stroke="green" stroke-width="1" stroke-dasharray="3 2"/> -->
+                </svg>
+                </div>
+                `
+                    }
 
                 }
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
