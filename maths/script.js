@@ -26,9 +26,13 @@ function addition_questions(num1, num2, Symbol) {
 }
 
 function addTagsToContent(num1, num2, Symbol) {
-    let html = `<div class="percentage"><span class="beforeOf">${num1}</span> ${Symbol} <span class="afterOf">${num2}</span></div>`
+    let html = `<div class="percentage"><span>${num1}</span> ${Symbol} <span>${num2}</span></div>`
     let content = document.querySelector(".content")
     content.insertAdjacentHTML("beforeend", html)
+}
+
+function makeNUmbersIntoFraction(num1, num2) {
+    return `<span class="fraction"><span class="beforeOf">${num1}</span> <span class="uponSymbol">___</span> <span class="afterOf">${num2}</span></span>`
 }
 
 
@@ -43,6 +47,7 @@ inputs.forEach((input) => {
         let formForFraction = document.querySelector("form#formForFraction")
         let formForDecimal = document.querySelector("form#formForDecimal")
         let calculationOptionsForDecimal = document.querySelector("form#calculationOptionsForDecimal")
+        let calculationOptionsForFraction = document.querySelector("form#calculationOptionsForFraction")
 
 
         if (input.value == "addition" || input.value == "substraction" || input.value == "multiply" || input.value == "divide") {
@@ -56,6 +61,7 @@ inputs.forEach((input) => {
             formForFraction.style.display = "none"
             formForDecimal.style.display = "none"
             calculationOptionsForDecimal.style.display = "none"
+            calculationOptionsForFraction.style.display = "none"
             if (input.value == "multiply" || input.value == "divide") {
                 // optionsForSum.style.display = "none"
                 optionsForSum.style.gridTemplateColumns = "repeat(7, auto);"
@@ -84,7 +90,7 @@ inputs.forEach((input) => {
             })
 
 
-            
+
         }
         else if (input.value == "table") {
             formForTable.style.display = "grid"
@@ -92,11 +98,12 @@ inputs.forEach((input) => {
             formForFraction.style.display = "none"
             formForDecimal.style.display = "none"
             calculationOptionsForDecimal.style.display = "none"
+            calculationOptionsForFraction.style.display = "none"
             // formForDivide.style.display = "none"
             document.querySelectorAll(".optionOnlyForDivide").forEach((item) => {
                 item.style.display = "none"
             })
-            
+
 
         }
         else if (input.value == "perimeter" || input.value == "area") {
@@ -105,8 +112,9 @@ inputs.forEach((input) => {
             formForFraction.style.display = "none"
             formForDecimal.style.display = "none"
             calculationOptionsForDecimal.style.display = "none"
+            calculationOptionsForFraction.style.display = "none"
             // formForDivide.style.display = "none"
-            
+
             // document.querySelectorAll(".optionOnlyForDivide").forEach((item)=>{
             //         item.style.display = "none"
             //     })
@@ -116,9 +124,9 @@ inputs.forEach((input) => {
             document.querySelectorAll('form  > label.onlyForShapes').forEach((item) => {
                 item.style.display = "flex"
             })
-            
 
-            
+
+
         }
         else if (input.value == "fraction") {
             formForTable.style.display = "none"
@@ -126,32 +134,52 @@ inputs.forEach((input) => {
             formForFraction.style.display = "grid"
             formForDecimal.style.display = "none"
             calculationOptionsForDecimal.style.display = "none"
+            // calculationOptionsForFraction.style.display = "none"
         } else if (input.value == "decimal") {
             formForTable.style.display = "none"
             optionsForSum.style.display = "none"
             formForFraction.style.display = "none"
             formForDecimal.style.display = "grid"
+            calculationOptionsForFraction.style.display = "none"
             // calculationOptionsForDecimal.style.display = "grid"
-            
-            
+
+
         }
 
     })
 })
 
 
-document.querySelectorAll("form#formForDecimal input").forEach((input)=>{
-    input.addEventListener("click",()=>{
+document.querySelectorAll("form#formForDecimal input").forEach((input) => {
+    input.addEventListener("click", () => {
         document.querySelector("form#calculationOptionsForDecimal").style.display = "grid"
     })
+})
+
+document.querySelectorAll("form#formForFraction input").forEach((input) => {
+    input.addEventListener("click", () => {
+            if (input.value !== "per" && input.value !== "per-s") {
+                document.querySelector("form#calculationOptionsForFraction").style.display = "grid"
+            }else{
+                document.querySelector("form#calculationOptionsForFraction").style.display = "none"
+            }
+        })
 })
 
 function getNums(input) {
     let num1 = 0
     let num2 = 0
-    if (input == "2-1" || input == "1-2") {
+    if (input == "2-1") {
         num1 = Math.floor(Math.random() * 90) + 10;
         num2 = Math.floor(Math.random() * 8) + 2;
+    }
+    else if (input == "1-1") {
+        num1 = Math.floor(Math.random() * 9) + 1;
+        num2 = Math.floor(Math.random() * 9) + 1;
+    }
+    else if (input == "1-2") {
+        num1 = Math.floor(Math.random() * 9) + 1;
+        num2 = Math.floor(Math.random() * 90) + 10;
     }
     else if (input == "2-2") {
         num1 = Math.floor(Math.random() * 90) + 10;
@@ -721,6 +749,11 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     }
     if (calculationType == "fraction") {
         input = document.querySelector('input[name="optionsForFraction"]:checked').value;
+        let current_input = ""
+        if (document.querySelector("form#calculationOptionsForFraction input[name='calculationOptionsForFraction']") !== null) {
+            current_input = document.querySelector("form#calculationOptionsForFraction input[name='calculationOptionsForFraction']:checked").value
+        }
+
         if (input == "per") {
             document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
             for (let i = 1; i <= 20; i++) {
@@ -730,15 +763,61 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
-        if (input == "per-s") {
+        else if (input == "per-s") {
             document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
             for (let i = 1; i <= 20; i++) {
                 let standrad_percentages = ["1", "2", "2.5", "3", "4", "5", "6.25", "7", "7.5", "8", "9", "10", "12.5", "15", "16.67", "17.5", "20", "25", "30", "33.33", "35", "40", "45", "50", "55", "60", "62.5", "66.67", "70", "75", "80", "85", "87.5", "90", "95", "100"]
                 let num1 = standrad_percentages[Math.floor(Math.random() * standrad_percentages.length - 1) + 1];
                 let num2 = Math.floor(Math.random() * 900) + 100;
                 let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span> = ______</div>`
+                // document.querySelector("#content").insertAdjacentHTML("beforeend", html)
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
+        } else {
+
+            document.querySelector("#content").insertAdjacentHTML("beforeend", `<div class='title'>Find the value of :</div>`)
+            let symbol = ""
+            if (input == "sum") {
+                symbol = "+"
+            }
+            if (input == "subtraction") {
+                symbol = "-"
+            }
+            if (input == "multiply") {
+                symbol = "x"
+            }
+            if (input == "divide") {
+                symbol = "÷"
+            }
+            for (let i = 1; i <= 20; i++) {
+                let html = ""
+                // let span =`<span class="fraction"><span class="beforeOf">${num1}</span> <span class="uponSymbol">___</span> <span class="afterOf">${num2}</span></span>`
+                let current_input_getnums = current_input
+                if (current_input.includes("-sd")) {
+                    current_input_getnums = current_input_getnums.replace("-sd", "")
+                }
+                let Numbers1 = getNums(current_input_getnums)
+                let Numbers2 = getNums(current_input_getnums)
+
+                if (current_input.includes("-sd")) {
+                    // current_input_getnums = current_input_getnums.replace("-sd", "")
+                    Numbers2[1] = Numbers1[1]
+                }
+                // if (current_input == "1-1-sd" || current_input == "1-2-sd" || current_input == "2-2-sd") {
+                // }
+                // let spanWithFraction1 = makeNUmbersIntoFraction(Numbers1[0] , Numbers1[1])
+                // let spanWithFraction2 = makeNUmbersIntoFraction(Numbers2[0] , Numbers2[1])
+                html = `<div class="fraction-container">
+                <span class="fraction"><span class="beforeOf">${Numbers1[0]}</span> 
+                    <span class="afterOf">${Numbers1[1]}</span></span>
+                <span class="symbol-fraction">${symbol}</span>
+                <span class="fraction"><span class="beforeOf">${Numbers2[0]}</span> 
+                    <span class="afterOf">${Numbers2[1]}</span></span>
+            </div>`
+                document.querySelector("#content").insertAdjacentHTML("beforeend", html)
+            }
+
+
         }
 
         // console.log("you are in fraction");
@@ -809,11 +888,13 @@ document.querySelector("button.clear").addEventListener("click", () => {
     let formForDecimal = document.querySelector("form#formForDecimal")
     let optionsForSum = document.querySelector("form#optionsForSum")
     let calculationOptionsForDecimal = document.querySelector("form#calculationOptionsForDecimal")
+    let calculationOptionsForFraction = document.querySelector("form#calculationOptionsForFraction")
     formForTable.style.display = "none"
     optionsForSum.style.display = "none"
     formForFraction.style.display = "none"
     formForDecimal.style.display = "none"
     calculationOptionsForDecimal.style.display = "none"
+    calculationOptionsForFraction.style.display = "none"
     content.innerHTML = ""
 
 })

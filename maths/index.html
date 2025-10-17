@@ -99,10 +99,43 @@
 
         </form>
         <form id="formForFraction">
+            <input type="radio" id="sum-fraction" name="optionsForFraction" value="sum">
+            <label for="sum-fraction">Sum</label>
+            <input type="radio" id="subtraction-fraction" name="optionsForFraction" value="subtraction">
+            <label for="subtraction-fraction">Sub</label>
+            <input type="radio" id="multiply-fraction" name="optionsForFraction" value="multiply">
+            <label for="multiply-fraction">Mul</label>
+            <input type="radio" id="divide-fraction" name="optionsForFraction" value="divide">
+            <label for="divide-fraction">Div</label>
+            <input type="radio" id="mixed-fraction" name="optionsForFraction" value="mixed">
+            <label for="mixed-fraction">Mixed</label>
             <input type="radio" id="per" name="optionsForFraction" value="per">
             <label for="per">Per</label>
             <input type="radio" id="per-s" name="optionsForFraction" value="per-s">
             <label for="per-s">Per-s</label>
+        </form>
+
+        <form id="calculationOptionsForFraction">
+            <input type="radio" id="1-1-Fraction" name="calculationOptionsForFraction" value="1-1">
+            <label for="1-1-Fraction">1-1</label>
+            <input type="radio" id="1-1-sd-Fraction" name="calculationOptionsForFraction" value="1-1-sd">
+            <label for="1-1-sd-Fraction">1-1-sd</label>
+            <input type="radio" id="1-2-Fraction" name="calculationOptionsForFraction" value="1-2">
+            <label for="1-2-Fraction">1-2</label>
+            <input type="radio" id="1-2-sd-Fraction" name="calculationOptionsForFraction" value="1-2-sd">
+            <label for="1-2-sd-Fraction">1-2-sd</label>
+            <input type="radio" id="2-1-Fraction" name="calculationOptionsForFraction" value="2-1">
+            <label for="2-1-Fraction">2-1</label>
+            <input type="radio" id="2-2-Fraction" name="calculationOptionsForFraction" value="2-2">
+            <label for="2-2-Fraction">2-2</label>
+            <input type="radio" id="2-2-sd-Fraction" name="calculationOptionsForFraction" value="2-2-sd">
+            <label for="2-2-sd-Fraction">2-2-sd</label>
+            <input type="radio" id="3-1-Fraction" name="calculationOptionsForFraction" value="3-1">
+            <label for="3-1-Fraction">3-1</label>
+            <input type="radio" id="3-2-Fraction" name="calculationOptionsForFraction" value="3-2">
+            <label for="3-2-Fraction">3-2</label>
+            <input type="radio" id="3-3-Fraction" name="calculationOptionsForFraction" value="3-3">
+            <label for="3-3-Fraction">3-3</label>
         </form>
 
         <form id="formForDecimal">
@@ -143,6 +176,7 @@
             <input type="radio" id="5-5-decimal" name="calculationOptionsForDecimal" value="5-5">
             <label for="5-5-decimal">5-5</label>
         </form>
+
         <!-- <form id="formForDivide">
             <input type="radio" id="5-5" name="optionsForSum" value="5-5">
             <label for="5-5">5-5</label>
@@ -150,11 +184,13 @@
 
 
         <div class="content" id="content">
-
-            <!-- <img src="flower1.svg" alt="">
-            <img src="flower1.svg" alt=""> -->
-            <!-- <div class="percentage"><span class="beforeOf"></span> of <span class="afterOf"></span></div> -->
-
+            <!-- <div class="fraction-container">
+                <span class="fraction"><span class="beforeOf">34</span> 
+                    <span class="afterOf">45</span></span>
+                <span class="symbol-fraction">+</span>
+                <span class="fraction"><span class="beforeOf">34</span>
+                    <span class="afterOf">45</span></span>
+            </div> -->
         </div>
 
 

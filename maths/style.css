@@ -203,7 +203,7 @@ form {
 
 form#formForTable,
 form#optionsForSum,
-form#formForFraction , form#formForDecimal ,form#calculationOptionsForDecimal {
+form#formForFraction,form#calculationOptionsForFraction , form#formForDecimal ,form#calculationOptionsForDecimal {
     display: none;
 }
 
@@ -236,10 +236,14 @@ input[type="radio"]:checked+label {
 
 
 form#optionsForSum,
-form#formForFraction , form#formForDecimal , form#calculationOptionsForDecimal {
+ form#formForDecimal , form#calculationOptionsForDecimal {
     grid-template-columns: repeat(6, auto);
 }
 
+form#formForFraction , form#calculationOptionsForFraction {
+    grid-template-columns: repeat(7, auto);
+
+}
 form#formForTable {
     grid-template-columns: repeat(9, auto);
 }
@@ -273,10 +277,15 @@ div.content:has(>div.parellelogram) {
     /* flex-direction: column; */
 }
 
-div.content:has(>div.percentage) {
+div.content:has(>div.percentage){
     display: grid;
     grid-template-columns: auto;
     padding-top: 50px;
+}
+div.content:has(>div.fraction-container) {
+    display: grid;
+    grid-template-columns: auto;
+    padding-top: 70px;
 }
 
 
@@ -546,8 +555,8 @@ div.content:has(>div.percentage) {
     padding: 5px;
 }
 
-.percentage {
-    counter-increment: percentage;
+.percentage , div.fraction-container{
+    /* counter-increment: percentage; */
     font-size: 1.3rem;
     margin-bottom: 10px;
 }
@@ -557,12 +566,21 @@ div.content:has(>div.percentage) {
     color: rgba(187, 6, 6, 0.815);
 } */
 
-.content .percentage::before {
+.content .percentage::before{
     counter-increment: item;
     /* Increase counter for each element */
     content: counter(item) ". ";
     /* Display the number followed by a period */
     color: rgba(187, 6, 6, 0.815);
+}
+.content .fraction-container::before {
+    position: absolute;
+    counter-increment: item;
+    /* Increase counter for each element */
+    content: counter(item) ". ";
+    /* Display the number followed by a period */
+    color: rgba(187, 6, 6, 0.815);
+    transform: translate(-32px,7px);
 }
 
 .content .divide::before {
@@ -573,3 +591,51 @@ div.content:has(>div.percentage) {
     color: rgba(187, 6, 6, 0.815);
 }
 
+
+
+div.fraction-container{
+    position: relative;
+    transform: translate(0,-10px);
+    margin-left: 35px;
+    margin-bottom: 40px;
+}
+div.fraction-container span.fraction:nth-child(1){
+    position: relative;
+}
+div.fraction-container span.fraction:nth-child(3){
+    position: relative;
+    left: 75px;
+}
+span.symbol-fraction{
+    position: relative;
+    left: 60px;
+    top: 12px;
+}
+div.fraction-container span.fraction span{
+    position: absolute;
+}
+/* span.fraction span.uponSymbol{
+    left: -4px;
+    top: 5px;
+} */
+span.fraction span.afterOf  {
+    text-align: center;
+    /* background-color: red; */
+    min-width: 45px;
+    top: 27px;
+    /* left: 50px; */
+}
+span.fraction span.beforeOf  {
+    text-align: center;
+    /* background-color: green; */
+    min-width: 45px;
+    border-bottom: 2px solid black;
+    /* top: 30px; */
+    /* left: 50px; */
+}
+
+label{
+    /* text-align: center; */
+    /* align-items: center; */
+    justify-content: center;
+}
