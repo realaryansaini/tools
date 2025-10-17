@@ -369,7 +369,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             for (let i = 1; i <= 12; i++) {
                 let units = ["cm", "m"]
                 let unit = units[Math.floor(Math.random() * 2) + 0]
-                let num1 = Math.floor(Math.random() * 990) + 10;
+                let num1 = Math.floor(Math.random() * 800) + 200;
                 let num2 = Math.floor(Math.random() * 90) + 10;
                 let html = ""
                 if (calculationType == "area") {
@@ -610,7 +610,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 `
                     }
                     if (input == "rhombus-s") {
-                        num1 = Math.floor(Math.random() * 9900) + 100;
+                        num1 = Math.floor(Math.random() * 9800) + 200;
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                 <polygon points="0,100 50,0 200,0 150,100" 
@@ -663,7 +663,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                     `
                     }
                     if (input == "pgram-h") {
-                        num1 = Math.floor(Math.random() * 900) + 100;
+                        num1 = Math.floor(Math.random() * 800) + 200;
 
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
@@ -716,7 +716,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 `
                     }
                     if (input == "rhombus-s") {
-                        num1 = Math.floor(Math.random() * 9900) + 100;
+                        num1 = Math.floor(Math.random() * 9800) + 200;
                         html = `<div class="parellelogram"><svg  viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
                     <!-- Parallelogram tightly fit in viewBox -->
                 <polygon points="0,100 50,0 200,0 150,100" 
@@ -741,7 +741,6 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 </div>
                 `
                     }
-
                 }
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
@@ -750,7 +749,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
     if (calculationType == "fraction") {
         input = document.querySelector('input[name="optionsForFraction"]:checked').value;
         let current_input = ""
-        if (document.querySelector("form#calculationOptionsForFraction input[name='calculationOptionsForFraction']") !== null) {
+        if (document.querySelector("form#calculationOptionsForFraction input[name='calculationOptionsForFraction']") !== null && input !== "per" && input !== "per-s") {
             current_input = document.querySelector("form#calculationOptionsForFraction input[name='calculationOptionsForFraction']:checked").value
         }
 
@@ -759,7 +758,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
             for (let i = 1; i <= 20; i++) {
                 let num1 = Math.floor(Math.random() * 90) + 10;
                 let num2 = Math.floor(Math.random() * 900) + 100;
-                let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span> = ______</div>`
+                let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span></div>`
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }
         }
@@ -769,7 +768,7 @@ document.getElementById('refreshBtn').addEventListener('click', () => {
                 let standrad_percentages = ["1", "2", "2.5", "3", "4", "5", "6.25", "7", "7.5", "8", "9", "10", "12.5", "15", "16.67", "17.5", "20", "25", "30", "33.33", "35", "40", "45", "50", "55", "60", "62.5", "66.67", "70", "75", "80", "85", "87.5", "90", "95", "100"]
                 let num1 = standrad_percentages[Math.floor(Math.random() * standrad_percentages.length - 1) + 1];
                 let num2 = Math.floor(Math.random() * 900) + 100;
-                let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span> = ______</div>`
+                let html = `<div class="percentage"><span class="beforeOf">${num1}%</span> of <span class="afterOf">${num2}</span></div>`
                 // document.querySelector("#content").insertAdjacentHTML("beforeend", html)
                 document.querySelector("#content").insertAdjacentHTML("beforeend", html)
             }

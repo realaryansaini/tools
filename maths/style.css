@@ -150,48 +150,6 @@ html {
 }
 
 
-/* @media screen and (max-width:500px) {
-
-    .content {
-        grid-template-columns: auto auto auto;
-    }
-
-    .math-question {
-        font-size: 20px;
-    }
-
-
-
-} */
-
-
-/* 
-input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-label {
-    display: inline-block;
-    padding: 10px;
-    background: #eee;
-    border-radius: 4px;
-    font-size: .8rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin: 0 5px;
-}
-
-input[type="radio"]:checked+label {
-    background: #009688cf;
-    color: #fff;
-}
-
-form{
-    margin-bottom: 5px;
-} */
 
 
 form {
@@ -277,16 +235,12 @@ div.content:has(>div.parellelogram) {
     /* flex-direction: column; */
 }
 
-div.content:has(>div.percentage){
+div.content:has(>div.percentage) , div.content:has(>div.fraction-container){
     display: grid;
     grid-template-columns: auto;
     padding-top: 50px;
 }
-div.content:has(>div.fraction-container) {
-    display: grid;
-    grid-template-columns: auto;
-    padding-top: 70px;
-}
+
 
 
 
@@ -581,6 +535,7 @@ div.content:has(>div.fraction-container) {
     /* Display the number followed by a period */
     color: rgba(187, 6, 6, 0.815);
     transform: translate(-32px,7px);
+    font-size: 1.1rem;
 }
 
 .content .divide::before {
@@ -595,47 +550,57 @@ div.content:has(>div.fraction-container) {
 
 div.fraction-container{
     position: relative;
-    transform: translate(0,-10px);
+    /* transform: translate(0,-10px); */
     margin-left: 35px;
-    margin-bottom: 40px;
+    margin-bottom: 38px;
+    font-size: 1.1rem;
+    /* width: 150px; */
+    /* background-color: red; */
 }
+/* div.fraction-container span.fraction:nth-child(1){
+    position: absolute;
+} */
+/* div.fraction-container span.fraction:nth-child(3){
+    position: absolute;
+    transform: translate(75px , 0);
+    background-color: green;
+} */
+
+div.fraction-container span.fraction:last-child{
+    margin-left: 80px;
+    position: relative;
+}
+
 div.fraction-container span.fraction:nth-child(1){
     position: relative;
 }
-div.fraction-container span.fraction:nth-child(3){
-    position: relative;
-    left: 75px;
-}
+
 span.symbol-fraction{
     position: relative;
     left: 60px;
     top: 12px;
 }
-div.fraction-container span.fraction span{
+/* div.fraction-container span.fraction span{
     position: absolute;
-}
+} */
 /* span.fraction span.uponSymbol{
     left: -4px;
     top: 5px;
 } */
 span.fraction span.afterOf  {
+    position: absolute;
     text-align: center;
-    /* background-color: red; */
-    min-width: 45px;
+    width: 40px;
     top: 27px;
-    /* left: 50px; */
 }
+
 span.fraction span.beforeOf  {
+    position: absolute;
     text-align: center;
-    /* background-color: green; */
-    min-width: 45px;
-    border-bottom: 2px solid black;
-    /* top: 30px; */
-    /* left: 50px; */
+    width: 40px;
+    border-bottom: 1px solid black;
 }
 
 label{
-    /* text-align: center; */
-    /* align-items: center; */
     justify-content: center;
 }
