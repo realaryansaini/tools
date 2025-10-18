@@ -1,0 +1,53 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Export HTML Container to PDF</title>
+  <!-- jsPDF and html2canvas libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Link your external JS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="inputsContainer">
+    <input type="text" name="" id="input-array" placeholder="Enter Array">
+    <input type="text" name="" id="input-title" placeholder="Enter Title">
+    <button id="submit">Submit</button>
+  </div>
+  <div id="container">
+    <!-- <div id="main-title">English Test / Class - <span id="standard">4th</span></div>
+    <div id="date-container"><span id="date">23/10/25</span></div> -->
+
+    <ol id="main-questions-container" type="A">
+      <!-- <div class="q-a-title">A. Answer the following question<div>
+      <ol class="q-a">
+        <li class="question">a.what is the full form of cpu ?</li>
+        <li class="question">a.what is the full form of cpu ?</li>
+        <li class="question">a.what is the full form of cpu ?</li>
+        <li class="question">a.what is the full form of cpu ?</li>
+        <li class="question">a.what is the full form of cpu ?</li>
+        <li class="question">a.what is the full form of cpu ?</li>
+        <li class="question">a.what is the full form of cpu ?</li>
+        <li class="question">a.what is the full form of cpu ?</li>
+      </ol> -->
+      <!-- <li class="mcq-title">Multiple choice quesiton</li>
+      <ol class="mcq">
+        <li class="quesiton">what is the father of computer ?</li>
+        <ol class="options-container">
+          <li class="option">option1</li>
+          <li class="option">option2</li>
+          <li class="option">option3</li>
+          <li class="option">option4</li>
+        </ol>
+      </ol> -->
+    </ol>
+  </div>
+  <button onclick="exportContainerToPDF()">Export to PDF</button>
+  <script src="script.js"></script>
+</body>
+
+</html>
