@@ -62,18 +62,9 @@ function showContent(question_array , input_title_array) {
             html = html + "</ol>"
             content.insertAdjacentHTML("beforeend", html)
 
-        } else if (item.[0].includes("T/F") == true) {
+        } else {
             let html = `<ol class="q-a">`
             content.insertAdjacentHTML("beforeend", `<li class="q-a-title">True/False</li>`)
-            item.forEach((subItem) => {
-                let question = `<li class="question">${subItem}</li>`
-                html = html + question
-            })
-            html = html + "</ol>"
-            content.insertAdjacentHTML("beforeend", html)
-        }else {
-            let html = `<ol class="q-a">`
-            content.insertAdjacentHTML("beforeend", `<li class="q-a-title">Fill in the blanks.</li>`)
             item.forEach((subItem) => {
                 let question = `<li class="question">${subItem}</li>`
                 html = html + question
